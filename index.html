@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ro"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Society</title>
+
+    <meta name="description" content="Code Society: Comunitatea unde tinerii programatori învață, conectează și construiesc viitorul. Workshop-uri, conferințe și hackathoane.">
+    <meta property="og:title" content="Code Society - Join the Revolution">
+    <meta property="og:description" content="Alătură-te comunității noastre. Evenimente tech, mentori de top și networking.">
+    <meta property="og:image" content="assets/img/logo2.png">
+    <meta property="og:url" content="https://societateacodului.netlify.app">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+<body>
+
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="myBar"></div>
+    </div>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <span class="font-hacked glitch-effect" data-text="LOADING...">LOADING...</span>
+            <div class="loading-bar">
+                <div class="progress"></div>
+            </div>
+            <p class="console-text">> System initializing_</p>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="assets/img/logo.png" alt="Code Society Logo" class="logo-img" id="mainLogo">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html#home">ACASĂ</a></li>
+            <li><a href="index.html#events">EVENIMENTE</a></li>
+            <li><a href="index.html#mentors">MENTORI</a></li>
+            <li><a href="index.html#sponsors">Sponsori</a></li>
+            <li><a href="join.html" class="nav-btn-cta" id="joinBtn">JOIN US</a></li>
+        </ul>
+
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+
+        <video autoplay muted loop playsinline class="hero-video-bg" id="bgVideo">
+            <source src="assets/video/bg-video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1 class="font-hacked glitch-wrapper"></h1>
+
+            <p>Conferințe, workshop-uri și o comunitate pentru viitorii profesioniști în tehnologie. Învață. Conectează-te. Codează.</p>
+
+            <div class="hero-buttons">
+                <a href="#events" class="btn btn-primary">URMĂTORUL EVENIMENT</a>
+                <a href="#about" class="btn btn-secondary">DESPRE NOI</a>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="marquee-container">
+        <div class="marquee-content font-hacked">
+            CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+            CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+            CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+        </div>
+    </div>
+
+    <section class="events-section" id="events">
+        <div class="container">
+
+            <h2 class="section-title font-hacked reveal">
+                <span style="color: var(--red-primary)">></span> UPCOMING_EVENTS_
+            </h2>
+
+            <div class="events-grid">
+
+                <article class="event-card reveal">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000"
+                             alt="Laptop cu cod de securitate cibernetică"
+                             class="card-img-real">
+                        <span class="event-tag">WORKSHOP</span>
+                    </div>
+
+                    <div class="card-content">
+                    </div>
+
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">INTRO TO CYBERSECURITY</h3>
+
+                        <div class="event-details">
+                            <div class="detail-item">
+                                <span>📅</span> 24 OCT, 18:00
+                            </div>
+                            <div class="detail-item">
+                                <span>📍</span> Code Hub, Sala 1
+                            </div>
+                        </div>
+
+                        <p class="event-desc">
+                            Învață bazele securității cibernetice, tipuri de atacuri și cum să te protejezi. Hands-on training.
+                        </p>
+
+                        <a href="#" class="btn-card">RESERVĂ LOC -></a>
+                    </div>
+                </article>
+
+                <article class="event-card reveal delay-100">
+                    <div class="card-image-wrapper">
+                        <img src=""
+                             alt="DESCRIERE IMAGINE"
+                             class="card-img-real">
+                        <span class="event-tag">CONFERINTA</span>
+                    </div>
+
+                    <div class="card-content">
+                    </div>
+
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">FUTURE OF AI</h3>
+
+                        <div class="event-details">
+                            <div class="detail-item">
+                                <span>📅</span> 05 NOV, 10:00
+                            </div>
+                            <div class="detail-item">
+                                <span>📍</span> Aula Magna
+                            </div>
+                        </div>
+
+                        <p class="event-desc">
+                            Discuții cu experți din industrie despre impactul AI asupra carierelor viitoare în programare.
+                        </p>
+
+                        <a href="#" class="btn-card">DETALII -></a>
+                    </div>
+                </article>
+
+                <article class="event-card reveal delay-200">
+                    <div class="card-image-wrapper">
+                        <img src=""
+                             alt="HACKATHON"
+                             class="card-img-real">
+
+                        <span class="event-tag">HACKATHON</span>
+                    </div>
+
+                    <div class="card-content">
+                    </div>
+
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">CODE NIGHT 24H</h3>
+
+                        <div class="event-details">
+                            <div class="detail-item">
+                                <span>📅</span> 15 DEC, 20:00
+                            </div>
+                            <div class="detail-item">
+                                <span>📍</span> Online & Fizic
+                            </div>
+                        </div>
+
+                        <p class="event-desc">
+                            24 de ore de codare intensă. Premii, pizza și mentori de top alături de tine.
+                        </p>
+
+                        <a href="#" class="btn-card">ÎNSCRIE ECHIPA -></a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-container">
+        <div class="marquee-content font-hacked">
+            CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+            CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+            CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+        </div>
+    </div>
+
+    <section class="about-section" id="mentors">
+        <div class="container">
+
+            <div class="about-layout">
+                <div class="about-text reveal">
+                    <h2 class="section-title-light font-hacked">
+                        <span style="color: var(--red-dark)">//</span> WHO_WE_ARE
+                    </h2>
+                    <p class="about-desc">
+                        Code Society nu este doar un club, este o rampă de lansare. Suntem locul unde pasiunea pentru linii de cod întâlnește oportunitățile reale din industrie.
+                    </p>
+                    <p class="about-desc">
+                        Organizăm conferințe, workshop-uri și hackathoane pentru a aduce studenții mai aproape de profesioniștii care construiesc viitorul.
+                    </p>
+
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <span class="stat-number font-hacked" data-target="50">0</span>+
+                            <span class="stat-label">Evenimente</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number font-hacked" data-target="1000">0</span>+
+                            <span class="stat-label">Membri</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mentors-grid">
+
+                    <div class="flip-card reveal">
+                        <div class="flip-card-inner">
+
+                            <div class="flip-card-front">
+                                <div class="mentor-img-wrapper">
+                                    <img src="assets/img/Vladut.jpg" alt="Mentor" class="mentor-img-real">
+                                </div>
+                                <h4 class="font-hacked">Vladut N.</h4>
+                                <p class="mentor-role">Student Poli</p>
+                                <div class="decoration-line"></div>
+                            </div>
+
+                            <div class="flip-card-back">
+                                <h5 class="font-hacked">SKILL_SET:</h5>
+
+                                <div class="skill-container">
+                                    <div class="skill-label">
+                                        <span>JavaScript</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-container">
+                                    <div class="skill-label">
+                                        <span>React/Node</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-container">
+                                    <div class="skill-label">
+                                        <span>CyberSec</span>
+                                        <span>60%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mentor-socials">
+                                    <a href="#">GITHUB</a>
+                                    <a href="#">LINKEDIN</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="flip-card reveal delay-100">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="mentor-img-wrapper">
+                                    <img src="assets/img/Andrei.jpg" alt="Mentor" class="mentor-img-real">
+                                </div>
+                                <h4 class="font-hacked">Andrei N.</h4>
+                                <p class="mentor-role">Student CSIE</p>
+                                <div class="decoration-line"></div>
+                            </div>
+
+                            <div class="flip-card-back">
+                                <h5 class="font-hacked">SKILL_SET:</h5>
+
+                                <div class="skill-container">
+                                    <div class="skill-label"><span>Python</span><span>95%</span></div>
+                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 95%;"></div></div>
+                                </div>
+                                <div class="skill-container">
+                                    <div class="skill-label"><span>TensorFlow</span><span>80%</span></div>
+                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+                                </div>
+                                <div class="skill-container">
+                                    <div class="skill-label"><span>Data Viz</span><span>75%</span></div>
+                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75%;"></div></div>
+                                </div>
+
+                                <div class="mentor-socials">
+                                    <a href="#">GITHUB</a>
+                                    <a href="#">LINKEDIN</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card reveal delay-200">
+                        <div class="flip-card-inner">
+
+                            <div class="flip-card-front">
+                                <div class="mentor-img-wrapper">
+                                    <img src="assets/img/Darius.jpg" alt="Mentor" class="mentor-img-real">
+                                </div>
+                                <h4 class="font-hacked">Darius P.</h4>
+                                <p class="mentor-role">Student Poli</p>
+                                <div class="decoration-line"></div>
+                            </div>
+
+                            <div class="flip-card-back">
+                                <h5 class="font-hacked">SKILL_SET:</h5>
+
+                                <div class="skill-container">
+                                    <div class="skill-label">
+                                        <span>JavaScript</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-container">
+                                    <div class="skill-label">
+                                        <span>React/Node</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="skill-container">
+                                    <div class="skill-label">
+                                        <span>CyberSec</span>
+                                        <span>60%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mentor-socials">
+                                    <a href="#">GITHUB</a>
+                                    <a href="#">LINKEDIN</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="horizontal-scroll-section" id="sponsors">
+        <div class="sticky-wrapper">
+
+            <div class="sponsors-header">
+                <h2 class="font-hacked">> PARTNERS_&_ALLIES</h2>
+            </div>
+
+            <div class="tv-screen-container" id="tvScreen">
+
+                <div class="horizontal-track">
+
+                    <div class="sponsor-card">
+                        <div class="sponsor-icon">DATA_CORP</div>
+                        <h3>SYSTEMS_INC</h3>
+                        <p>Infrastructure</p>
+                    </div>
+
+                    <div class="sponsor-card">
+                        <div class="sponsor-icon">CYBER_SEC</div>
+                        <h3>NET_DEFENSE</h3>
+                        <p>Security</p>
+                    </div>
+
+                    <div class="sponsor-card">
+                        <div class="sponsor-icon">AI_LABS</div>
+                        <h3>NEURAL_NET</h3>
+                        <p>AI Models</p>
+                    </div>
+
+                    <div class="sponsor-card">
+                        <div class="sponsor-icon">HACK_EDU</div>
+                        <h3>CODE_BASE</h3>
+                        <p>Education</p>
+                    </div>
+
+                    <div class="sponsor-card">
+                        <div class="sponsor-icon">CLOUD_X</div>
+                        <h3>SKY_SERVERS</h3>
+                        <p>Hosting</p>
+                    </div>
+
+                </div>
+
+                <div class="crt-overlay"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+
+            <div class="footer-col">
+                <h3 class="font-hacked logo-text">&lt;CODE SOCIETY/&gt;</h3>
+                <p>Building the future bit by bit.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="font-hacked">NAVIGARE</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#events">Evenimente</a></li>
+                    <li><a href="#mentors">Despre Noi</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="font-hacked">CONNECT</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/codesociety.ro/" class="social-btn">INSTAGRAM</a>
+                    <a href="https://www.linkedin.com/company/codesocietyro/" class="social-btn">LINKEDIN</a>
+                    <a href="https://www.facebook.com/people/Code-Society/61580564026062/" class="social-btn">FACEBOOK</a>
+                    <a href="https://www.tiktok.com/@codesociety.ro" class="social-btn">TIKTOK</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Code Society. All rights reserved.</p>
+            <p class="console-log">System.out.println("Goodbye World");</p>
+        </div>
+    </footer>
+    <a href="#" id="backToTop" class="btn-top">↑</a>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>

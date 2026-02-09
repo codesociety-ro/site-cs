@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Code Society</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="assets/img/logo.png" alt="Code Society Logo" class="logo-img">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">ACASĂ</a></li>
+            <li><a href="index.html#events">EVENIMENTE</a></li>
+            <li><a href="index.html#mentors">MENTORI</a></li>
+            <li><a href="join.html" class="nav-btn-cta">JOIN US</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <section class="join-section">
+        <div class="terminal-container">
+
+            <div class="terminal-header">
+                <div class="buttons">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="title">root@codesociety:~</div>
+            </div>
+
+            <div class="terminal-body">
+                <div class="scanline"></div> <p class="output">Initializing secure connection...</p>
+                <p class="output">Loading module <span style="color:var(--red-primary)">auth_protocol_v2.0</span>...</p>
+                <p class="output success">[OK] Encryption keys exchanged.</p>
+                <br>
+                <p class="prompt-text">To join the society, please input credentials:</p>
+                <br>
+
+                <form class="terminal-form" action="https://formspree.io/f/xpwvggge" method="POST" id="hackerForm">
+
+                    <div class="terminal-input-group">
+                        <span class="prompt-sign">$</span>
+                        <label for="name">ENTER_NAME:</label>
+                        <input type="text" id="name" name="name" autocomplete="off" required>
+                    </div>
+
+                    <div class="terminal-input-group">
+                        <span class="prompt-sign">$</span>
+                        <label for="email">ENTER_EMAIL:</label>
+                        <input type="email" id="email" name="email" autocomplete="off" required>
+                    </div>
+
+                    <div class="terminal-input-group">
+                        <span class="prompt-sign">$</span>
+                        <label for="role">SELECT_ROLE:</label>
+                        <select id="role" name="role" class="terminal-select">
+                            <option value="frontend">Frontend_Dev</option>
+                            <option value="backend">Backend_Dev</option>
+                            <option value="designer">UI_UX_Designer</option>
+                            <option value="beginner">Newbie_Learner</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="terminal-submit">
+                        > EXECUTE_PROTOCOL (SUBMIT)
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3 class="font-hacked logo-text">&lt;CODE SOCIETY/&gt;</h3>
+                <p>Building the future bit by bit.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Code Society.</p>
+            <p class="console-log">System.out.println("Goodbye World");</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js?v=999"></script>
+</body>
+</html>
