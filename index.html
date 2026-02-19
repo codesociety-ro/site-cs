@@ -39,19 +39,22 @@
             <img src="assets/img/logo.png" alt="Code Society Logo" class="logo-img" id="mainLogo">
         </a>
 
+        <a href="join.html" class="btn btn-mobile-nav">> JOIN US</a>
+
         <ul class="nav-links">
-            <li><a href="index.html#home">ACASĂ</a></li>
-            <li><a href="index.html#events">EVENIMENTE</a></li>
-            <li><a href="index.html#mentors">MENTORI</a></li>
+            <li><a href="index.html#home">Acasă</a></li>
+            <li><a href="index.html#events">Evenimente</a></li>
+            <li><a href="index.html#echipa">Echipa</a></li>
             <li><a href="index.html#sponsors">Sponsori</a></li>
+            <li><a href="about.html">Despre noi</a></li>
             <li><a href="join.html" class="nav-btn-cta" id="joinBtn">JOIN US</a></li>
         </ul>
 
-        <div class="hamburger">
+        <button class="hamburger" aria-label="Deschide meniul de navigare" aria-expanded="false">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </div>
+        </button>
     </nav>
 
     <section class="hero" id="home">
@@ -70,15 +73,18 @@
 
             <div class="hero-buttons">
                 <a href="#events" class="btn btn-primary">URMĂTORUL EVENIMENT</a>
-                <a href="#about" class="btn btn-secondary">DESPRE NOI</a>
+                <a href="about.html" class="btn btn-secondary" id="joinBtn">DESPRE NOI</a>
             </div>
         </div>
 
     </section>
 
-    <div class="marquee-container">
+<div class="marquee-container">
         <div class="marquee-content font-hacked">
             CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+            CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+        </div>
+        <div class="marquee-content font-hacked" aria-hidden="true">
             CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
             CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
         </div>
@@ -91,286 +97,538 @@
                 <span style="color: var(--red-primary)">></span> UPCOMING_EVENTS_
             </h2>
 
-            <div class="events-grid">
+<div class="events-grid">
 
                 <article class="event-card reveal">
                     <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000"
-                             alt="Laptop cu cod de securitate cibernetică"
-                             class="card-img-real">
-                        <span class="event-tag">WORKSHOP</span>
-                    </div>
-
-                    <div class="card-content">
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="event-title font-hacked">INTRO TO CYBERSECURITY</h3>
-
-                        <div class="event-details">
-                            <div class="detail-item">
-                                <span>📅</span> 24 OCT, 18:00
-                            </div>
-                            <div class="detail-item">
-                                <span>📍</span> Code Hub, Sala 1
-                            </div>
-                        </div>
-
-                        <p class="event-desc">
-                            Învață bazele securității cibernetice, tipuri de atacuri și cum să te protejezi. Hands-on training.
-                        </p>
-
-                        <a href="#" class="btn-card">RESERVĂ LOC -></a>
-                    </div>
-                </article>
-
-                <article class="event-card reveal delay-100">
-                    <div class="card-image-wrapper">
-                        <img src=""
-                             alt="DESCRIERE IMAGINE"
-                             class="card-img-real">
+                        <img src="assets/img/ai conf.jpg" alt="AI" class="card-img-real">
                         <span class="event-tag">CONFERINTA</span>
                     </div>
-
                     <div class="card-content">
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="event-title font-hacked">FUTURE OF AI</h3>
-
+                        <h3 class="event-title font-hacked">GENERATED GENERATION</h3>
                         <div class="event-details">
-                            <div class="detail-item">
-                                <span>📅</span> 05 NOV, 10:00
-                            </div>
-                            <div class="detail-item">
-                                <span>📍</span> Aula Magna
-                            </div>
+                            <div class="detail-item"><span>📅</span> 28 FEB, 18:00</div>
+                            <div class="detail-item"><span>📍</span> TBD</div>
                         </div>
-
                         <p class="event-desc">
-                            Discuții cu experți din industrie despre impactul AI asupra carierelor viitoare în programare.
+                            AI in social media, de la deepfakes la content creation. Cum ne schimbă viața și carierele.
                         </p>
-
-                        <a href="#" class="btn-card">DETALII -></a>
+                        <a href="#" class="btn-card open-modal-btn" 
+                           data-title="GENERATED GENERATION" 
+                           data-tag="CONFERINTA" 
+                           data-date="28 FEB, 18:00" 
+                           data-location="TBD" 
+                           data-image="assets/img/ai conf.jpg" 
+                           data-desc="<br><br><b>Subiecte:</b><br>– Cum ne influențează AI cariera<br>– Ce oportunități apar în business & entrepreneurship<br>– Unde trasăm linia când vine vorba de etică și responsabilitate.">
+                           DETALII ->
+                        </a>
                     </div>
                 </article>
+            
+                <article class="event-card reveal delay-100 locked-event">
 
-                <article class="event-card reveal delay-200">
+                    <div class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div class="lock-text">ENCRYPTED</div>
+                    </div>
+
                     <div class="card-image-wrapper">
-                        <img src=""
-                             alt="HACKATHON"
-                             class="card-img-real">
-
-                        <span class="event-tag">HACKATHON</span>
+                        <img src="assets/img/ai work.jpg" alt="Bucuresti: Become Human" class="card-img-real">
+                        <span class="event-tag">WORKSHOP/HACKATHON</span>
                     </div>
-
                     <div class="card-content">
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="event-title font-hacked">CODE NIGHT 24H</h3>
-
+                        <h3 class="event-title font-hacked">BUCURESTI: BECOME HUMAN</h3>
                         <div class="event-details">
-                            <div class="detail-item">
-                                <span>📅</span> 15 DEC, 20:00
-                            </div>
-                            <div class="detail-item">
-                                <span>📍</span> Online & Fizic
-                            </div>
+                            <div class="detail-item"><span>📅</span> 07-08 MAR, ORA TBD</div>
+                            <div class="detail-item"><span>📍</span> TBD</div>
                         </div>
-
                         <p class="event-desc">
-                            24 de ore de codare intensă. Premii, pizza și mentori de top alături de tine.
+                            Become Human: pentru că în era AI, cea mai mare putere e să fii cel care deține controlul asupra codului, nu cel înlocuit de el.
                         </p>
-
-                        <a href="#" class="btn-card">ÎNSCRIE ECHIPA -></a>
+                        <a href="#" class="btn-card open-modal-btn" 
+                           data-title="BUCURESTI: BECOME HUMAN" 
+                           data-tag="WORKSHOP/HACKATHON" 
+                           data-date="07-08 MAR, ORA TBD" 
+                           data-location="TBD" 
+                           data-image="assets/img/ai work.jpg" 
+                           data-desc="Become Human: pentru că în era AI, cea mai mare putere e să fii cel care deține controlul asupra codului, nu cel înlocuit de el.">
+                           DETALII ->
+                        </a>
                     </div>
                 </article>
+
+                <article class="event-card reveal delay-200 locked-event">
+
+                    <div class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div class="lock-text">ENCRYPTED</div>
+                    </div>
+
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/cybersec.jpg" alt="ACCESS GRANTED: FUTURE IS NOT SECURE" class="card-img-real">
+                        <span class="event-tag">Conferinta</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">ACCESS GRANTED: FUTURE IS NOT SECURE</h3>
+                        <div class="event-details">
+                            <div class="detail-item"><span>📅</span> 21-22 MAR, ORA TBD</div>
+                            <div class="detail-item"><span>📍</span> TBD</div>
+                        </div>
+                        <p class="event-desc">
+                            O incursiune critică în vulnerabilitățile de mâine și strategiile esențiale pentru a proteja un viitor digital tot mai fragil.
+                        </p>
+                        <a href="#" class="btn-card open-modal-btn" 
+                           data-title="ACCESS GRANTED: FUTURE IS NOT SECURE" 
+                           data-tag="Conferinta" 
+                           data-date="21-22 MAR, ORA TBD" 
+                           data-location="TBD" 
+                           data-image="assets/img/cybersec.jpg" 
+                           data-desc="O incursiune critică în vulnerabilitățile de mâine și strategiile esențiale pentru a proteja un viitor digital tot mai fragil.">
+                           DETALII ->
+                        </a>
+                    </div>
+                </article>
+
+                <article class="event-card reveal delay-300 locked-event">
+
+                    <div class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div class="lock-text">ENCRYPTED</div>
+                    </div>
+
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/cybersec work.jpg" alt="Ai incuiat usa?" class="card-img-real">
+                        <span class="event-tag">Capture The Flag</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">Ai incuiat usa?</h3>
+                        <div class="event-details">
+                            <div class="detail-item"><span>📅</span> 28-29 MAR, ORA TBD</div>
+                            <div class="detail-item"><span>📍</span> TBD</div>
+                        </div>
+                        <p class="event-desc">
+                            Dacă la conferință ai aflat că viitorul nu e sigur, acum e rândul tău să demonstrezi că poți securiza intrarea.
+                        </p>
+                        <a href="#" class="btn-card open-modal-btn" 
+                           data-title="Ai incuiat usa? - CTF" 
+                           data-tag="Capture The Flag" 
+                           data-date="28-29 MAR, ORA TBD" 
+                           data-location="TBD" 
+                           data-image="assets/img/cybersec work.jpg" 
+                           data-desc="Dacă la conferință ai aflat că viitorul nu e sigur, acum e rândul tău să demonstrezi că poți securiza intrarea.">
+                           DETALII ->
+                        </a>
+                    </div>
+                </article>
+
+                <article class="event-card reveal delay-400 locked-event">
+
+                    <div class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div class="lock-text">ENCRYPTED</div>
+                    </div>
+
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/web dev conf.jpg" alt="Full stacking your way to succes" class="card-img-real">
+                        <span class="event-tag">Conferinta</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">Full stacking your way to succes</h3>
+                        <div class="event-details">
+                            <div class="detail-item"><span>📅</span> 18-19 APR, ORA TBD</div>
+                            <div class="detail-item"><span>📍</span> TBD</div>
+                        </div>
+                        <p class="event-desc">
+                            De ce să alegi o tabără când poți să conduci întregul câmp de luptă? Full stacking is the way.
+                        </p>
+                        <a href="#" class="btn-card open-modal-btn" 
+                           data-title="Full stacking your way to succes" 
+                           data-tag="Conferinta" 
+                           data-date="18-19 APR, ORA TBD" 
+                           data-location="TBD" 
+                           data-image="assets/img/web dev conf.jpg" 
+                           data-desc="De ce să alegi o tabără când poți să conduci întregul câmp de luptă? Full stacking is the way.">
+                           DETALII ->
+                        </a>
+                    </div>
+                 </article>
+
+                 <article class="event-card reveal delay-500 locked-event">
+
+                    <div class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div class="lock-text">ENCRYPTED</div>
+                    </div>
+
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/webdev work.jpg" alt="Byte into the coding world" class="card-img-real">
+                        <span class="event-tag">Workshop</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">Byte into the Coding World</h3>
+                        <div class="event-details">
+                            <div class="detail-item"><span>📅</span> 25-26 APR, ORA TBD</div>
+                            <div class="detail-item"><span>📍</span> TBD</div>
+                        </div>
+                        <p class="event-desc">
+                           Destul cu teoria; e timpul să-ți murdărești mâinile în cod și să vezi cum un singur byte poate schimba tot jocul.
+                        </p>
+                        <a href="#" class="btn-card open-modal-btn" 
+                           data-title="Byte into the Coding World" 
+                           data-tag="Workshop" 
+                           data-date="25-26 APR, ORA TBD" 
+                           data-location="TBD" 
+                           data-image="assets/img/webdev work.jpg" 
+                           data-desc="Destul cu teoria; e timpul să-ți murdărești mâinile în cod și să vezi cum un singur byte poate schimba tot jocul.">
+                           DETALII ->
+                        </a>  
+                    </div>                      
+                 </article>
+
+                 <article class="event-card reveal delay-500 locked-event">
+
+                    <div class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div class="lock-text">ENCRYPTED</div>
+                    </div>
+
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/cloud conf.jpg" alt="Don't reach for the sky, reach for the Cloud" class="card-img-real">
+                        <span class="event-tag">Conferinta</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">Don't reach for the sky, reach for the Cloud.</h3>
+                        <div class="event-details">
+                            <div class="detail-item"><span>📅</span> 23-24 MAI, ORA TBD</div>
+                            <div class="detail-item"><span>📍</span> TBD</div>
+                        </div>
+                        <p class="event-desc">
+                            Cerul e o limită pentru visători; pentru noi, Cloud-ul e infrastructura unde scalăm succesul până la infinit.
+                        </p>
+                        <a href="#" class="btn-card open-modal-btn" 
+                           data-title="Don't reach for the sky, reach for the Cloud." 
+                           data-tag="Conferinta" 
+                           data-date="23-24 MAI, ORA TBD" 
+                           data-location="TBD" 
+                           data-image="assets/img/cloud conf.jpg" 
+                           data-desc="Cerul e o limită pentru visători; pentru noi, Cloud-ul e infrastructura unde scalăm succesul până la infinit.">
+                           DETALII ->
+                        </a>
+                    </div>                           
+                 </article>
+
+                 <article class="event-card reveal delay-500 locked-event">
+
+                    <div class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div class="lock-text">ENCRYPTED</div>
+                    </div>
+
+                    <div class="card-image-wrapper">
+                        <img src="assets/img/cloud work.jpg" alt="Head in the clouds, feet on the code" class="card-img-real">
+                        <span class="event-tag">Workshop</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="event-title font-hacked">Head in the clouds, feet on the code</h3>
+                        <div class="event-details">
+                            <div class="detail-item"><span>📅</span> 30-31 MAI, ORA TBD</div>
+                            <div class="detail-item"><span>📍</span> TBD</div>
+                        </div>
+                        <p class="event-desc">
+                           E timpul să coborâm arhitecturile din „nori” direct în producție. Visează la scalabilitate globală, dar codează cu picioarele pe pământ.
+                        </p> 
+                        <a href="#" class="btn-card open-modal-btn" 
+                           data-title="Head in the clouds, feet on the code" 
+                           data-tag="Workshop" 
+                           data-date="30-31 MAI, ORA TBD" 
+                           data-location="TBD" 
+                           data-image="assets/img/cloud work.jpg" 
+                           data-desc="E timpul să coborâm arhitecturile din „nori” direct în producție. Visează la scalabilitate globală, dar codează cu picioarele pe pământ.">
+                           DETALII ->
+                        </a>
+                    </div>                         
+                 </article>
 
             </div>
-        </div>
     </section>
 
-    <div class="marquee-container">
+<div class="marquee-container">
         <div class="marquee-content font-hacked">
             CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+            CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
+        </div>
+        <div class="marquee-content font-hacked" aria-hidden="true">
             CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
             CODE SOCIETY &nbsp;///&nbsp; LEARN &nbsp;///&nbsp; CONNECT &nbsp;///&nbsp; BUILD &nbsp;///&nbsp;
         </div>
     </div>
 
-    <section class="about-section" id="mentors">
+    <section class="about-section" id="echipa">
         <div class="container">
 
-            <div class="about-layout">
-                <div class="about-text reveal">
-                    <h2 class="section-title-light font-hacked">
-                        <span style="color: var(--red-dark)">//</span> WHO_WE_ARE
-                    </h2>
-                    <p class="about-desc">
-                        Code Society nu este doar un club, este o rampă de lansare. Suntem locul unde pasiunea pentru linii de cod întâlnește oportunitățile reale din industrie.
-                    </p>
-                    <p class="about-desc">
-                        Organizăm conferințe, workshop-uri și hackathoane pentru a aduce studenții mai aproape de profesioniștii care construiesc viitorul.
-                    </p>
-
-                    <div class="stats-row">
-                        <div class="stat-item">
-                            <span class="stat-number font-hacked" data-target="50">0</span>+
-                            <span class="stat-label">Evenimente</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number font-hacked" data-target="1000">0</span>+
-                            <span class="stat-label">Membri</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mentors-grid">
-
-                    <div class="flip-card reveal">
-                        <div class="flip-card-inner">
-
-                            <div class="flip-card-front">
-                                <div class="mentor-img-wrapper">
-                                    <img src="assets/img/Vladut.jpg" alt="Mentor" class="mentor-img-real">
-                                </div>
-                                <h4 class="font-hacked">Vladut N.</h4>
-                                <p class="mentor-role">Student Poli</p>
-                                <div class="decoration-line"></div>
-                            </div>
-
-                            <div class="flip-card-back">
-                                <h5 class="font-hacked">SKILL_SET:</h5>
-
-                                <div class="skill-container">
-                                    <div class="skill-label">
-                                        <span>JavaScript</span>
-                                        <span>90%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 90%;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="skill-container">
-                                    <div class="skill-label">
-                                        <span>React/Node</span>
-                                        <span>85%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 85%;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="skill-container">
-                                    <div class="skill-label">
-                                        <span>CyberSec</span>
-                                        <span>60%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 60%;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="mentor-socials">
-                                    <a href="#">GITHUB</a>
-                                    <a href="#">LINKEDIN</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="flip-card reveal delay-100">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="mentor-img-wrapper">
-                                    <img src="assets/img/Andrei.jpg" alt="Mentor" class="mentor-img-real">
-                                </div>
-                                <h4 class="font-hacked">Andrei N.</h4>
-                                <p class="mentor-role">Student CSIE</p>
-                                <div class="decoration-line"></div>
-                            </div>
-
-                            <div class="flip-card-back">
-                                <h5 class="font-hacked">SKILL_SET:</h5>
-
-                                <div class="skill-container">
-                                    <div class="skill-label"><span>Python</span><span>95%</span></div>
-                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 95%;"></div></div>
-                                </div>
-                                <div class="skill-container">
-                                    <div class="skill-label"><span>TensorFlow</span><span>80%</span></div>
-                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
-                                </div>
-                                <div class="skill-container">
-                                    <div class="skill-label"><span>Data Viz</span><span>75%</span></div>
-                                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75%;"></div></div>
-                                </div>
-
-                                <div class="mentor-socials">
-                                    <a href="#">GITHUB</a>
-                                    <a href="#">LINKEDIN</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flip-card reveal delay-200">
-                        <div class="flip-card-inner">
-
-                            <div class="flip-card-front">
-                                <div class="mentor-img-wrapper">
-                                    <img src="assets/img/Darius.jpg" alt="Mentor" class="mentor-img-real">
-                                </div>
-                                <h4 class="font-hacked">Darius P.</h4>
-                                <p class="mentor-role">Student Poli</p>
-                                <div class="decoration-line"></div>
-                            </div>
-
-                            <div class="flip-card-back">
-                                <h5 class="font-hacked">SKILL_SET:</h5>
-
-                                <div class="skill-container">
-                                    <div class="skill-label">
-                                        <span>JavaScript</span>
-                                        <span>90%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 90%;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="skill-container">
-                                    <div class="skill-label">
-                                        <span>React/Node</span>
-                                        <span>85%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 85%;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="skill-container">
-                                    <div class="skill-label">
-                                        <span>CyberSec</span>
-                                        <span>60%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill" style="width: 60%;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="mentor-socials">
-                                    <a href="#">GITHUB</a>
-                                    <a href="#">LINKEDIN</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+           <div class="team-header reveal">
+                <h2 class="font-hacked">
+                    <span class="red-slash">//</span> THE_CORE_TEAM
+                </h2>
+                <p class="team-subtitle">> 13_MEMBERS_ACTIVE_</p>
             </div>
+
+            <div class="team-grid-full">
+
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="mentor-img-wrapper">
+                                <img src="assets/img/Vladut.jpeg" alt="Vladut Andrei" class="mentor-img-real">
+                            </div>
+                            <h4 class="font-hacked">Vladut Andrei</h4>
+                            <p class="mentor-role">Project Manager</p>
+                            <div class="decoration-line"></div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="mentor-socials">
+                                <a href="https://www.linkedin.com/in/vladut-nicolae-andrei/">LINKEDIN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card reveal delay-100">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="mentor-img-wrapper">
+                                <img src="assets/img/Andrei.jpeg" alt="Andrei Nitu" class="mentor-img-real">
+                            </div>
+                            <h4 class="font-hacked">Andrei Nitu</h4>
+                            <p class="mentor-role">Project Assistant</p>
+                            <div class="decoration-line"></div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="mentor-socials">
+                                <a href="https://www.linkedin.com/in/nituandreiraul/">LINKEDIN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flip-card reveal delay-200">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="mentor-img-wrapper">
+                                <img src="assets/img/Darius.jpeg" alt="Darius Preda" class="mentor-img-real">
+                            </div>
+                            <h4 class="font-hacked">Darius Preda</h4>
+                            <p class="mentor-role">Project Assistant</p>
+                            <div class="decoration-line"></div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="mentor-socials">
+                                <a href="https://www.linkedin.com/in/darius-preda/">LINKEDIN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+             <div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/edymoga.jpeg" alt="Eduard Moga" class="mentor-img-real">
+            </div>
+            <h4 class="font-hacked">Eduard Moga</h4>
+            <p class="mentor-role">BD Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+            <div class="mentor-socials">
+                <a href="https://www.linkedin.com/in/eduard-andrei-moga/">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/vlad.jpeg" alt="Vlad Stingaciu" class="mentor-img-real">
+            </div>
+            <h4 class="font-hacked">Vlad Stingaciu</h4>
+            <p class="mentor-role">BD Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+            
+            <div class="mentor-socials">
+                <a href="#">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/radu.jpeg" alt="Radu Lazar" class="mentor-img-real" style="object-position: top;">
+            </div>
+            <h4 class="font-hacked">Radu Lazar</h4>
+            <p class="mentor-role">BD Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+            
+            <div class="mentor-socials">
+                <a href="https://www.linkedin.com/in/radu-gabriel-laz%C4%83r-986034360/">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/clara.jpeg" alt="Clara Petre" class="mentor-img-real">
+            </div>
+            <h4 class="font-hacked">Clara Petre</h4>
+            <p class="mentor-role">Creative & MK Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+            
+            <div class="mentor-socials">
+                <a href="https://www.linkedin.com/in/clara-petre-81036a181/">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/edy.jpeg" alt="Eduard Burda" class="mentor-img-real" style="object-position: top;">
+            </div>
+            <h4 class="font-hacked">Eduard Burda</h4>
+            <p class="mentor-role">Creative & MK Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+
+            <div class="mentor-socials">
+                <a href="https://www.linkedin.com/in/eduard-c%C4%83t%C4%83lin-burda-26bb29311/">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/carina.jpeg" alt="Carina Ceausescu" class="mentor-img-real">
+            </div>
+            <h4 class="font-hacked">Carina Ceausescu</h4>
+            <p class="mentor-role">Marketing Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+            
+            <div class="mentor-socials">
+                <a href="www.linkedin.com/in/carina-ceausescu-437b883b1">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/raluca.jpeg" alt="Raluca Badita" class="mentor-img-real">
+            </div>
+            <h4 class="font-hacked">Raluca Badita</h4>
+            <p class="mentor-role">HR & MK Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+
+            <div class="mentor-socials">
+                <a href="https://www.linkedin.com/in/raluca-b%C4%83di%C8%9Ba-a95112260/">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/roxana.jpeg" alt="Roxana G." class="mentor-img-real">
+            </div>
+            <h4 class="font-hacked">Roxana Ghitan</h4>
+            <p class="mentor-role">PR Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+            
+            <div class="mentor-socials">
+                <a href="https://www.linkedin.com/in/roxana-ghitan-007873388/">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/mihnea.jpeg" alt="Mihnea Ruzsa" class="mentor-img-real">
+            </div>
+            <h4 class="font-hacked">Mihnea Ruzsa</h4>
+            <p class="mentor-role">PR Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+            
+            <div class="mentor-socials">
+                <a href="https://www.linkedin.com/in/mihnea-ruzsa-0aab2338a/">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flip-card reveal">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="mentor-img-wrapper">
+                <img src="assets/img/cezar.jpeg" alt="Cezar Birleanu" class="mentor-img-real">
+            </div>
+            <h4 class="font-hacked">Cezar Birleanu</h4>
+            <p class="mentor-role">PR Officer</p>
+            <div class="decoration-line"></div>
+        </div>
+
+        <div class="flip-card-back">
+            
+            <div class="mentor-socials">
+                <a href="https://www.linkedin.com/in/birleanu-cezar-388520379/">LINKEDIN</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+                 </div>
         </div>
     </section>
 
@@ -378,7 +636,7 @@
         <div class="sticky-wrapper">
 
             <div class="sponsors-header">
-                <h2 class="font-hacked">> PARTNERS_&_ALLIES</h2>
+                <h2 class="font-hacked">> PARTNERS AND ALLIES</h2>
             </div>
 
             <div class="tv-screen-container" id="tvScreen">
@@ -386,33 +644,33 @@
                 <div class="horizontal-track">
 
                     <div class="sponsor-card">
-                        <div class="sponsor-icon">DATA_CORP</div>
-                        <h3>SYSTEMS_INC</h3>
-                        <p>Infrastructure</p>
+                        <div class="sponsor-icon">TBA</div>
+                        <h3></h3>
+                        <p></p>
                     </div>
 
                     <div class="sponsor-card">
-                        <div class="sponsor-icon">CYBER_SEC</div>
-                        <h3>NET_DEFENSE</h3>
-                        <p>Security</p>
+                        <div class="sponsor-icon">TBA</div>
+                        <h3></h3>
+                        <p></p>
                     </div>
 
                     <div class="sponsor-card">
-                        <div class="sponsor-icon">AI_LABS</div>
-                        <h3>NEURAL_NET</h3>
-                        <p>AI Models</p>
+                        <div class="sponsor-icon">TBA</div>
+                        <h3></h3>
+                        <p></p>
                     </div>
 
                     <div class="sponsor-card">
-                        <div class="sponsor-icon">HACK_EDU</div>
-                        <h3>CODE_BASE</h3>
-                        <p>Education</p>
+                        <div class="sponsor-icon">TBA</div>
+                        <h3></h3>
+                        <p></p>
                     </div>
 
                     <div class="sponsor-card">
-                        <div class="sponsor-icon">CLOUD_X</div>
-                        <h3>SKY_SERVERS</h3>
-                        <p>Hosting</p>
+                        <div class="sponsor-icon">TBA</div>
+                        <h3></h3>
+                        <p></p>
                     </div>
 
                 </div>
@@ -422,6 +680,29 @@
 
         </div>
     </section>
+
+    <div id="terminal-overlay"></div>
+    
+<div id="eventModal" class="event-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <span class="event-tag" id="modalTag">TAG</span>
+                <h3 class="font-hacked" id="modalTitle">TITLU EVENIMENT</h3>
+            </div>
+            <div class="event-details modal-meta">
+                <div class="detail-item" id="modalDate">📅 DATA</div>
+                <div class="detail-item" id="modalLocation">📍 LOCATIA</div>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Event Image" class="modal-img">
+                <p id="modalDescription" class="modal-desc">Descrierea detaliată va apărea aici...</p>
+            </div>
+            <div class="modal-footer">
+                <a href="join.html" class="terminal-submit" style="text-align: center; text-decoration: none;">> REZERVĂ LOC ACUM</a>
+            </div>
+        </div>
+    </div>
 
     <footer class="site-footer">
         <div class="container footer-content">
@@ -434,10 +715,11 @@
             <div class="footer-col">
                 <h4 class="font-hacked">NAVIGARE</h4>
                 <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home">Acasă</a></li>
                     <li><a href="#events">Evenimente</a></li>
-                    <li><a href="#mentors">Despre Noi</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#echipa">Echipa</a></li>
+                    <li><a href="#sponsors">Sponsori</a></li>
+                    <li><a href="about.html">Despre noi</a></li>
                 </ul>
             </div>
 
@@ -453,13 +735,13 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Code Society. All rights reserved.</p>
+            <p>&copy; 2026 Code Society. All rights reserved.</p>
             <p class="console-log">System.out.println("Goodbye World");</p>
         </div>
     </footer>
     <a href="#" id="backToTop" class="btn-top">↑</a>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 
 </body>
 </html>

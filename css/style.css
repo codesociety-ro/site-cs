@@ -1,275 +1,7 @@
-﻿/* --- SCROLL PROGRESS BAR --- */
-.scroll-progress-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: transparent;
-    z-index: 10001; /* Peste meniu */
-}
-
-.scroll-progress-bar {
-    height: 3px;
-    background: var(--red-primary);
-    width: 0%; /* Începe de la 0 */
-    box-shadow: 0 0 10px var(--red-primary);
-    transition: width 0.1s ease;
-}
-
-/* Fix pentru ancora care intră sub meniu */
-html {
-    scroll-behavior: smooth; /* Scroll lin nativ */
-}
-
-section {
-    scroll-margin-top: 100px; /* Când sare la secțiune, lasă 100px spațiu sus */
-}
-
-/* Glow pentru Tag-urile de pe carduri */
-.event-tag {
-    /* Adăugăm o umbră colorată care simulează lumina */
-    box-shadow: 0 0 10px var(--red-primary);
-}
-
-/* Glow pentru numerele mari de la "Despre Noi" */
-.stat-number {
-    text-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
-}
-
-/* Glow subtil la bordura cardului când pui mouse-ul */
-.event-card:hover {
-    box-shadow: 0 0 20px rgba(196, 30, 58, 0.15); /* Lumină difuză roșie */
-    border-color: var(--red-primary);
-}
-
-/* Asigură-te că imaginea nu iese din chenar */
-.card-image {
-    overflow: hidden; /* Important pentru zoom */
-}
-
-    /* Țintim elementul din interior (placeholder-ul sau img-ul) */
-    .card-image .img-placeholder,
-    .card-image img {
-        transition: transform 0.5s ease; /* Mișcare lină */
-    }
-
-/* La hover pe card, imaginea se mărește */
-.event-card:hover .card-image .img-placeholder,
-.event-card:hover .card-image img {
-    transform: scale(1.1); /* Zoom 10% */
-}
-
-/* --- SCROLL REVEAL ANIMATION --- */
-.reveal {
-    position: relative;
-    transform: translateY(50px); /* Împins în jos cu 50px */
-    opacity: 0; /* Invizibil inițial */
-    transition: all 1s ease; /* Animația durează 1 secundă */
-}
-
-    .reveal.active {
-        transform: translateY(0); /* Revine la poziția normală */
-        opacity: 1; /* Devine vizibil */
-    }
-
-
-/* --- SELECȚIE TEXT --- */
-::selection {
-    background-color: var(--red-primary); /* Fundal roșu */
-    color: white; /* Text alb */
-    text-shadow: none;
-}
-
-/* --- SCROLLBAR PERSONALIZAT (Webkit: Chrome, Edge, Safari) --- */
-::-webkit-scrollbar {
-    width: 10px; /* Lățimea barei */
-}
-
-/* Culoarea de fundal a "șinei" */
-::-webkit-scrollbar-track {
-    background: var(--bg-dark);
-}
-
-/* Culoarea "liftului" (partea care se mișcă) */
-::-webkit-scrollbar-thumb {
-    background: var(--red-dark);
-    border-radius: 5px;
-    border: 1px solid var(--red-primary); /* Bordură fină pentru contrast */
-}
-
-    /* Când pui mouse-ul pe scrollbar */
-    ::-webkit-scrollbar-thumb:hover {
-        background: var(--red-primary);
-        box-shadow: 0 0 10px var(--red-primary); /* Efect neon la hover */
-    }
-/* --- STILURI NAVIGATIE --- */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* SCHIMBARE AICI: Era 20px 40px. Punem 10px ca să nu fie bara prea înaltă */
-    padding: 10px 40px;
-    background: rgba(18, 0, 0, 0.9); /* Mai opac puțin pentru contrast */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(196, 30, 58, 0.3);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    /* Opțional: Setăm o înălțime fixă dacă vrei să fii strict */
-    height: 80px;
-}
-
-/* --- STILURI LOGO IMAGINE --- */
-
-/* Link-ul care ține logo-ul */
-.logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-/* Imaginea propriu-zisă */
-.logo-img {
-    height: 100px; /* Înălțimea standard pentru navbar */
-    width: auto; /* Lățimea se calculează automat ca să nu se deformeze */
-    object-fit: contain; /* Se asigură că tot logo-ul e vizibil */
-    transition: transform 0.3s ease; /* Efect fin la hover */
-}
-
-/* Efect la hover pe logo */
-.logo-link:hover .logo-img {
-    transform: scale(1.05); /* Se mărește puțin */
-    filter: drop-shadow(0 0 5px var(--red-primary)); /* Glow roșu în jurul formei */
-}
-
-/* --- AJUSTARE PENTRU MOBIL --- */
-@media screen and (max-width: 768px) {
-    .logo-img {
-        height: 40px; /* Pe telefon îl lăsăm puțin mai mic să aibă loc meniul hamburger */
-    }
-}
-
-.logo {
-    font-size: 1.5rem;
-    color: var(--text-white);
-    font-weight: bold;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    align-items: center;
-}
-
-    .nav-links a {
-        text-decoration: none;
-        color: var(--text-white);
-        font-family: 'Fira Code', monospace;
-        font-size: 1.1rem; /* Era 0.9rem -> Acum e mai mare */
-        font-weight: 600; /* Le facem și puțin mai groase (bold) */
-        transition: color 0.3s;
-    }
-
-        .nav-links a:hover {
-            color: var(--red-primary);
-        }
-
-        /* Link activ în meniu */
-        .nav-links a.active-link {
-            color: var(--red-primary);
-            text-shadow: 0 0 10px var(--red-primary); /* Glow */
-            position: relative;
-        }
-            /* O liniuță sub link-ul activ */
-            .nav-links a.active-link::after {
-                content: '';
-                position: absolute;
-                bottom: -5px;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background-color: var(--red-primary);
-                box-shadow: 0 0 10px var(--red-primary);
-            }
-
-.nav-btn-cta {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    background-color: var(--red-primary);
-    /* Mărim butonul */
-    padding: 10px 25px; /* Era 8px 15px */
-    font-size: 1.1rem; /* Text mai mare */
-    font-weight: bold;
-    border-radius: 4px;
-}
-
-    .nav-btn-cta:hover {
-        background-color: white !important;
-        color: var(--bg-dark) !important;
-    }
-
-/* --- MENIU MOBIL (Ascuns pe PC) --- */
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    transition: all 0.3s ease-in-out;
-    background-color: white;
-}
-
-/* RESPONSIVE NAV */
-@media (max-width: 768px) {
-    .hamburger {
-        display: block; /* Apare doar pe mobil */
-    }
-
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0; /* Ascunde bara din mijloc la click */
-        }
-
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-    .nav-links {
-        position: fixed;
-        left: -100%; /* Ascuns în stânga */
-        top: 70px;
-        gap: 0;
-        flex-direction: column;
-        background-color: var(--bg-dark);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        border-bottom: 2px solid var(--red-primary);
-    }
-
-        .nav-links.active {
-            left: 0; /* Apare pe ecran */
-        }
-
-        .nav-links li {
-            margin: 16px 0;
-        }
-}
-
-/* --- 1. SETĂRI GENERALE & CULORI --- */
+﻿/* ==========================================================================
+   1. ROOT, VARIABILE & RESET
+   ========================================================================== */
 :root {
-    /* Paleta ta de culori */
     --bg-dark: #120000;
     --bg-light: #F4F4F4;
     --red-primary: #C41E3A;
@@ -291,285 +23,88 @@ html {
 body {
     background-color: var(--bg-dark);
     color: var(--text-white);
-    font-family: 'Fira Code', monospace; /* Fontul secundar */
+    font-family: 'Fira Code', monospace;
     overflow-x: hidden;
 }
 
-/* --- 2. FONTS SETUP --- */
-/* Aici vei încărca fontul HACKED local când îl ai în folderul proiectului */
+/* ==========================================================================
+   2. TYPOGRAPHY & SELECTION
+   ========================================================================== */
 @font-face {
     font-family: 'HACKED';
     src: url('../assets/fonts/HACKED.ttf') format('truetype');
 }
 
 .font-hacked {
-    font-family: 'HACKED', 'Courier New', monospace; /* Fallback dacă nu e încărcat */
+    font-family: 'HACKED', 'Courier New', monospace;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-/* --- HERO SECTION (CONTAINER PRINCIPAL) --- */
-.hero {
-    position: relative;
-    height: 100vh; /* Ocupă tot ecranul */
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
-    overflow: hidden;
-    /* AM SCOS TOATE PROPRIETĂȚILE DE BACKGROUND DE AICI */
-    background: transparent;
+::selection {
+    background-color: var(--red-primary);
+    color: white;
+    text-shadow: none;
 }
 
-/* --- 1. VIDEO DE FUNDAL FIX --- */
-.hero-video-bg {
-    position: fixed; /* Asta e cheia! Îl blochează pe ecran. */
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    /* Centrare perfectă a video-ului */
-    transform: translateX(-50%) translateY(-50%);
-    z-index: -2; /* Cel mai în spate */
-    object-fit: cover; /* Se asigură că acoperă tot fără benzi negre */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--red-dark);
+    border-radius: 5px;
+    border: 1px solid var(--red-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--red-primary);
+    box-shadow: 0 0 10px var(--red-primary);
 }
 
-/* --- 2. OVERLAY GRADIENT (Peste video, sub text) --- */
-.hero-overlay {
-    position: fixed; /* Stă fix peste video */
+/* ==========================================================================
+   3. UTILITIES & ANIMATIONS
+   ========================================================================== */
+.scroll-progress-container {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    /* Același gradient pe care îl aveai înainte */
-    background: linear-gradient(to bottom, rgba(5, 0, 0, 0.4) 0%, rgba(5, 0, 0, 0.7) 80%, #050000 100%);
-    z-index: -1; /* Între video și conținut */
+    height: 3px;
+    background: transparent;
+    z-index: 10001;
 }
 
-.hero-content {
+.scroll-progress-bar {
+    height: 3px;
+    background: var(--red-primary);
+    width: 0%;
+    box-shadow: 0 0 10px var(--red-primary);
+    transition: width 0.1s ease;
+}
+
+section {
+    scroll-margin-top: 100px;
+}
+
+.reveal {
     position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    text-align: center;
-    transition: transform 0.1s ease-out;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 1s ease;
 }
 
-/* --- 4. TYPOGRAPHY & ELEMENTS --- */
-
-/* Logo în colț (poate fi mutat în Nav) */
-.logo-placeholder {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 1.5rem;
-    color: var(--red-primary);
-    font-weight: bold;
-    z-index: 3;
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
 }
 
-h1 {
-    font-size: 4rem; /* Mare pe PC */
-    margin-bottom: 20px;
-    line-height: 1.1;
-    text-shadow: 3px 3px 0px var(--red-dark); /* Efect 3D simplu */
-}
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
 
-p.subtitle {
-    font-size: 1.2rem;
-    color: #d1d1d1;
-    margin-bottom: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 400;
-}
-
-/* --- 5. BUTOANE --- */
-/* --- DISTANȚARE BUTOANE HERO --- */
-.hero-buttons {
-    display: flex;
-    gap: 40px; /* AICI E CHEIA: 40px spațiu între ele */
-    justify-content: center; /* Sau 'center' dacă textul e centrat */
-    align-items: center;
-    margin-top: 30px; /* Spațiu față de textul de sus */
-    flex-wrap: wrap; /* Important pentru mobil: să cadă unul sub altul dacă nu e loc */
-}
-
-/* Opțional: Ajustare pentru mobil */
-@media (max-width: 768px) {
-    .hero-buttons {
-        gap: 20px; /* Pe telefon le apropiem puțin */
-        justify-content: center; /* Pe mobil arată bine centrate */
-    }
-}
-
-.btn {
-    padding: 15px 30px;
-    font-family: 'Fira Code', monospace;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.1s ease;
-    position: relative;
-    overflow: hidden; /* Important ca lumina să nu iasă din buton */
-    z-index: 1;
-    display: inline-block;
-}
-
-    .btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%; /* Pornește din stânga, afară din buton */
-        width: 100%;
-        height: 100%;
-        background: linear-gradient( 120deg, transparent, rgba(255, 255, 255, 0.4), transparent );
-        transition: all 0.6s;
-        z-index: -1;
-    }
-
-    /* La hover, raza trece spre dreapta */
-    .btn:hover::before {
-        left: 100%;
-    }
-
-/* Buton Principal */
-.btn-primary {
-    background-color: var(--red-primary);
-    color: white;
-    border: 2px solid var(--red-primary);
-}
-
-    .btn-primary:hover {
-        background-color: var(--red-dark);
-        border-color: var(--red-dark);
-        box-shadow: 0 0 15px var(--red-primary); /* Glow effect */
-    }
-
-/* Buton Secundar (Outline) */
-.btn-secondary {
-    background-color: transparent;
-    color: white;
-    border: 2px solid white;
-}
-
-    .btn-secondary:hover {
-        background-color: white;
-        color: var(--bg-dark);
-    }
-
-/* --- UNIVERSAL BUTTON SHINE (Efectul de Luciu) --- */
-
-/* 1. Setări de bază pentru TOATE butoanele */
-.btn,
-.nav-btn-cta,
-.terminal-submit,
-.btn-submit,
-.btn-secondary {
-    position: relative;
-    overflow: hidden; /* Să nu iasă lumina din buton */
-    z-index: 1;
-    transition: all 0.3s ease; /* Tranziție fină pentru culori */
-}
-
-    /* 2. Raza de lumină (Configurația Standard - ALBĂ) */
-    /* Se aplică automat la toate butoanele de mai sus */
-    .btn::before,
-    .nav-btn-cta::before,
-    .terminal-submit::before,
-    .btn-submit::before,
-    .btn-secondary::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%; /* Ascuns în stânga */
-        width: 100%;
-        height: 100%;
-        /* Gradient ALB (pentru butoanele roșii/negre) */
-        background: linear-gradient( 120deg, transparent, rgba(255, 255, 255, 0.6), /* Alb semi-transparent */
-        transparent );
-        transition: all 0.6s ease; /* Viteza trecerii */
-        z-index: -1; /* Sub text */
-    }
-
-    /* 3. Animația la Hover (Trece de la stânga la dreapta) */
-    .btn:hover::before,
-    .nav-btn-cta:hover::before,
-    .terminal-submit:hover::before,
-    .btn-submit:hover::before,
-    .btn-secondary:hover::before {
-        left: 100%;
-    }
-
-    /* --- EXCEPȚIA: BUTONUL ALB (Despre Noi / Secondary) --- */
-    /* Aici suprascriem culoarea razei să fie ROȘIE */
-    .btn-secondary::before {
-        background: linear-gradient( 120deg, transparent, var(--red-primary), /* Folosim roșul principal */
-        transparent );
-        opacity: 0.8; /* Ajustăm opacitatea să nu fie prea strident */
-    }
-
-/* --- 6. ANIMATII --- */
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-}
-
-/* --- 7. MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem; /* Mai mic pe mobil */
-    }
-
-    p.subtitle {
-        font-size: 1rem;
-    }
-
-    .btn-container {
-        flex-direction: column; /* Butoanele unul sub altul */
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-/* --- EFECT NEON GLOW (Clean & Premium) --- */
-.glowing-text {
-    color: #fff;
-    /* Umbră roșie fină în spate */
-    text-shadow: 0 0 5px rgba(196, 30, 58, 0.5), 0 0 10px rgba(196, 30, 58, 0.3), 0 0 20px rgba(196, 30, 58, 0.2);
-    /* Mică animație de pulsație (respirație) */
-    animation: neon-pulse 3s infinite alternate;
-}
-
-@keyframes neon-pulse {
-    from {
-        text-shadow: 0 0 5px rgba(196, 30, 58, 0.5), 0 0 10px rgba(196, 30, 58, 0.3);
-    }
-
-    to {
-        text-shadow: 0 0 10px rgba(196, 30, 58, 0.8), 0 0 20px rgba(196, 30, 58, 0.5), 0 0 30px rgba(196, 30, 58, 0.3);
-    }
-}
-
-/* Când butonul este apăsat (click sau touch) */
-.btn:active, .btn-card:active {
-    transform: scale(0.95); /* Se micșorează la 95% */
-}
-
-/* --- PRELOADER STYLES --- */
+/* Preloader */
 #preloader {
     position: fixed;
     top: 0;
@@ -577,1439 +112,786 @@ p.subtitle {
     width: 100%;
     height: 100%;
     background-color: var(--bg-dark);
-    z-index: 9999; /* Trebuie să fie peste tot */
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: opacity 0.5s ease, visibility 0.5s;
 }
 
-.loader-content {
-    text-align: center;
-    width: 300px;
-}
+.loader-content { text-align: center; width: 300px; }
+.loader-content span { font-size: 2rem; color: var(--red-primary); display: block; margin-bottom: 20px; }
+.loading-bar { width: 100%; height: 4px; background: #333; border-radius: 2px; overflow: hidden; margin-bottom: 10px; }
+.progress { width: 0%; height: 100%; background: var(--red-primary); box-shadow: 0 0 10px var(--red-primary); animation: loadProgress 2s ease-in-out forwards; }
+.console-text { font-family: 'Fira Code', monospace; color: #888; font-size: 0.8rem; margin-top: 10px; }
+@keyframes loadProgress { 0% { width: 0%; } 40% { width: 30%; } 80% { width: 90%; } 100% { width: 100%; } }
+.preloader-hidden { opacity: 0; visibility: hidden; }
 
-    .loader-content span {
-        font-size: 2rem;
-        color: var(--red-primary);
-        display: block;
-        margin-bottom: 20px;
-    }
-
-.loading-bar {
-    width: 100%;
-    height: 4px;
-    background: #333;
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.progress {
-    width: 0%;
-    height: 100%;
-    background: var(--red-primary);
-    box-shadow: 0 0 10px var(--red-primary);
-    animation: loadProgress 2s ease-in-out forwards; /* Animația durează 2 secunde */
-}
-
-.console-text {
-    font-family: 'Fira Code', monospace;
-    color: #888;
-    font-size: 0.8rem;
-    margin-top: 10px;
-}
-
-/* Animația barei */
-@keyframes loadProgress {
-    0% {
-        width: 0%;
-    }
-
-    40% {
-        width: 30%;
-    }
-
-    80% {
-        width: 90%;
-    }
-
-    100% {
-        width: 100%;
-    }
-}
-
-/* Clasa care ascunde preloaderul */
-.preloader-hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-/* --- BACK TO TOP BUTTON --- */
+/* Back to Top */
 .btn-top {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 50px;
     height: 50px;
-    background-color: var(--red-primary); /* Facem fundalul roșu direct, să se vadă */
+    background-color: var(--red-primary);
     color: white;
     font-weight: bold;
     font-size: 24px;
     text-align: center;
-    line-height: 50px; /* Centrează săgeata vertical */
+    line-height: 50px;
     text-decoration: none;
-    border-radius: 5px; /* Puțin rotunjit */
-    z-index: 10000; /* Prioritate maximă */
-    /* Ascundere și Tranziție */
+    border-radius: 5px;
+    z-index: 10000;
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
-    transform: translateY(20px); /* Stă puțin mai jos când e ascuns */
+    transform: translateY(20px);
 }
+.btn-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.btn-top:hover { background-color: var(--bg-dark); border: 2px solid var(--red-primary); color: var(--red-primary); }
 
-    /* Când primește clasa .show devine vizibil */
-    .btn-top.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .btn-top:hover {
-        background-color: var(--bg-dark);
-        border: 2px solid var(--red-primary);
-        color: var(--red-primary);
-    }
-
-/* --- STILURI PENTRU EVENIMENTE --- */
-
-.events-section {
-    padding: 80px 20px;
-    background-color: #0a0000; /* Un pic mai închis decât Hero pt contrast */
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    border-bottom: 2px solid var(--red-dark);
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-/* GRID SYSTEM */
-.events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto-responsive */
-    gap: 30px;
-}
-
-/* CARD DESIGN */
-.event-card {
-    background-color: #1a0505; /* Dark Burgundy background */
-    border: 1px solid var(--red-dark);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-    .event-card:hover {
-        transform: translateY(-5px); /* Se ridică puțin la hover */
-        box-shadow: 0 10px 20px rgba(196, 30, 58, 0.2); /* Glow roșu */
-        border-color: var(--red-primary);
-    }
-
-/* Zona de imagine */
-.card-image {
-    height: 200px;
-    position: relative;
-    background-color: #000;
-}
-
-.img-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-/* Tag-ul (ex: Workshop) */
-.event-tag {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: var(--red-primary);
-    color: white;
-    padding: 5px 10px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-}
-
-.tag-conference {
-    background-color: #4a6fa5; /* Altă culoare pt diversitate, sau tot roșu */
-    background-color: var(--red-deep); /* Păstrăm paleta */
-}
-
-/* Conținutul Cardului */
-.card-content {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Împinge footer-ul jos */
-}
-
-.event-title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    line-height: 1.2;
-    color: var(--text-white);
-}
-
-.event-details {
-    display: flex;
-    gap: 15px;
-    font-size: 0.9rem;
-    color: #bbb;
-    margin-bottom: 15px;
-    font-family: 'Fira Code', monospace;
-}
-
-.event-desc {
-    font-size: 0.95rem;
-    color: #d1d1d1;
-    margin-bottom: 25px;
-    line-height: 1.6;
-    flex-grow: 1;
-}
-
-/* Butonul din card */
-.btn-card {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--red-primary);
-    font-weight: bold;
-    font-family: 'Fira Code', monospace;
-    border: 1px solid var(--red-primary);
-    padding: 10px 0;
-    text-align: center;
-    border-radius: 4px;
-    transition: background 0.3s ease;
-}
-
-    .btn-card:hover {
-        background-color: var(--red-primary);
-        color: white;
-    }
-
-/* Responsive Mobile tweaks */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 1.8rem;
-    }
-}
-
-/* --- STILURI SECȚIUNE LIGHT (DESPRE NOI) --- */
-.about-section {
-    background-color: var(--bg-light); /* F4F4F4 */
-    color: #120000; /* Text închis */
-    padding: 80px 20px;
-}
-
-.about-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    align-items: center;
-}
-
-.about-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.section-title-light {
-    font-size: 2.5rem;
-    color: #120000;
-    margin-bottom: 30px;
-    border-bottom: 3px solid var(--red-primary);
-    display: inline-block;
-}
-
-.about-desc {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.stats-row {
-    display: flex;
-    gap: 40px;
-    margin-top: 30px;
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    color: var(--red-primary);
-    display: block;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #555;
-}
-
-/* GRID MENTORI */
-.mentors-grid {
-    flex: 1;
-    min-width: 300px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.mentor-card {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    border: 1px solid #ddd;
-}
-
-    .mentor-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--red-primary);
-    }
-
-.mentor-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    border: 3px solid var(--red-primary);
-}
-
-.mentor-role {
-    font-size: 0.85rem;
-    color: #666;
-    font-weight: bold;
-}
-
-/* --- STILURI FOOTER --- */
-.site-footer {
-    background-color: var(--bg-dark);
-    color: var(--text-white);
-    border-top: 5px solid var(--red-dark);
-    padding-top: 60px;
-}
-
-.footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
-    padding-bottom: 40px;
-}
-
-.footer-col {
-    flex: 1;
-    min-width: 200px;
-}
-
-.logo-text {
-    color: var(--red-primary);
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.footer-col h4 {
-    margin-bottom: 20px;
-    color: #bbb;
-    border-left: 3px solid var(--red-primary);
-    padding-left: 10px;
-}
-
-.footer-links {
-    list-style: none;
-}
-
-    .footer-links li {
-        margin-bottom: 10px;
-    }
-
-    .footer-links a {
-        color: #888;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-        .footer-links a:hover {
-            color: var(--red-primary);
-            padding-left: 5px; /* Mică animație la hover */
-        }
-
-.social-btn {
-    display: inline-block;
-    margin-right: 15px;
-    color: white;
-    text-decoration: none;
-    font-size: 0.9rem;
-    border-bottom: 1px solid var(--red-primary);
-}
-
-.footer-bottom {
-    background-color: #000;
-    padding: 20px;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #555;
+/* ==========================================================================
+   4. NAVBAR
+   ========================================================================== */
+.navbar {
     display: flex;
     justify-content: space-between;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.console-log {
-    font-family: 'Fira Code', monospace;
-    color: var(--red-dark);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .about-layout {
-        flex-direction: column;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-/* --- STILURI NOI PENTRU IMAGINI REALE (TAG IMG) --- */
-
-/* 1. Pentru Evenimente */
-.card-image-wrapper {
-    height: 200px;
-    width: 100%;
-    position: relative; /* Ca să putem pune tag-ul WORKSHOP peste poză */
-    background-color: #000;
-}
-
-.card-img-real {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cheia succesului: taie marginile, nu deformează poza */
-    transition: transform 0.5s ease;
-}
-
-/* Efectul de Zoom la Hover (Actualizat pt tag-ul img) */
-.event-card:hover .card-img-real {
-    transform: scale(1.1);
-}
-
-/* 2. Pentru Mentori */
-.mentor-img-real {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* O face cerc */
-    object-fit: cover;
-    margin: 0 auto 15px; /* Centrare */
-    border: 3px solid var(--red-primary);
-    display: block;
-    transition: transform 0.3s;
-}
-
-.mentor-card:hover .mentor-img-real {
-    transform: scale(1.1) rotate(5deg); /* Mic efect jucăuș */
-    border-color: var(--bg-dark);
-}
-
-/* Întârzieri pentru animația reveal */
-.delay-100 {
-    transition-delay: 100ms;
-}
-
-.delay-200 {
-    transition-delay: 200ms;
-}
-
-.delay-300 {
-    transition-delay: 300ms;
-}
-
-
-/* =========================================
-   MOBILE RESPONSIVENESS (MEDIA QUERIES)
-   ========================================= */
-
-@media screen and (max-width: 768px) {
-
-    /* 1. REPARATIE HERO & OVERLAP (Problema ta principală) */
-    .hero {
-        height: auto; /* Nu mai forțăm înălțimea fixă de ecran */
-        min-height: 100vh; /* Dar să fie măcar cât ecranul */
-        padding-top: 150px; /* Mai mult loc sus pentru meniu */
-        padding-bottom: 100px; /* Loc jos ca să nu intre Marquee peste butoane */
-        text-align: center; /* Totul centrat pe mobil */
-    }
-
-    .hero-content {
-        max-width: 100%;
-        padding: 0 20px; /* Margini laterale să nu se lipească textul de ecran */
-    }
-
-    .hero h1 {
-        font-size: 2.5rem; /* Micșorăm titlul imens */
-        line-height: 1.2;
-    }
-
-    /* 2. REPARATIE BUTOANE HERO */
-    .hero-buttons {
-        justify-content: center; /* Le centrăm */
-        flex-direction: column; /* Le punem unul SUB altul, nu unul lângă altul */
-        gap: 20px; /* Spațiu între ele */
-        width: 100%;
-    }
-
-    .btn, .btn-secondary {
-        width: 100%; /* Butoanele să ocupe toată lățimea pe mobil */
-        max-width: 300px; /* Dar să nu fie exagerat de late pe tablete */
-        display: block;
-        text-align: center;
-    }
-
-    /* 3. REPARATIE GRID-URI (Evenimente & Mentori) */
-    /* Transformăm grilele din 3 coloane într-o singură coloană */
-    .events-grid,
-    .mentors-grid {
-        grid-template-columns: 1fr; /* O singură coloană */
-        gap: 40px;
-        padding: 0 20px;
-    }
-
-    .about-content {
-        flex-direction: column; /* Textul "About" sub titlu */
-    }
-
-    /* 4. REPARATIE NAVBAR (Meniul) */
-    .navbar {
-        padding: 10px 20px; /* Păstrăm padding mic pe mobil */
-        height: auto; /* Lăsăm înălțimea automată pe mobil */
-    }
-
-    .logo {
-        font-size: 1.2rem; /* Logo mai mic să aibă loc hamburgerul */
-    }
-
-    /* 5. REPARATIE STATISTICI (Numerele mari) */
-    .stats-row {
-        flex-direction: column; /* Una sub alta */
-        gap: 30px;
-    }
-
-    /* 6. FORMULARE (Join Us) */
-    .terminal-container {
-        width: 95%; /* Să nu iasă din ecran */
-        margin: 0 auto;
-    }
-
-    .terminal-body {
-        padding: 15px; /* Mai puțin spațiu interior */
-    }
-
-    .terminal-input-group {
-        flex-direction: column; /* Label sus, Input jos */
-        align-items: flex-start;
-    }
-
-        .terminal-input-group label {
-            margin-bottom: 5px;
-        }
-
-    /* 7. ASCUNDEM SCROLL-UL ORIZONTAL (Siguranță) */
-    body, html {
-        overflow-x: hidden;
-        width: 100%;
-    }
-
-    /* 1. REPARATIE TITLURI GIGANT (Upcoming Events) */
-    .section-title, h2 {
-        font-size: 2rem !important; /* Micșorăm drastic fontul (era probabil 3-4rem) */
-        line-height: 1.2;
-        word-wrap: break-word; /* Dacă e un cuvânt lung, îl rupe să nu iasă din ecran */
-        padding: 0 10px; /* Puțin spațiu lateral */
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* 2. REPARATIE SECTIUNEA "WHO WE ARE" / ABOUT */
-    .about-content,
-    .about-container { /* Punem ambele clase ca siguranță */
-        display: flex;
-        flex-direction: column !important; /* OBLIGATORIU: Elementele unul sub altul */
-        width: 100%;
-        padding: 0;
-    }
-
-    /* Textul din About */
-    .about-text {
-        width: 100%;
-        padding: 0 15px; /* Margini să nu se lipească de ecran */
-        margin-bottom: 30px; /* Spațiu până la următorul element */
-        text-align: justify; /* Arată mai curat pe mobil */
-    }
-
-    /* Dacă ai imagine sau element vizual în dreapta la About */
-    .about-image-wrapper,
-    .about-img {
-        width: 100%;
-        max-width: 350px; /* Să nu fie cât tot ecranul dacă e prea mare */
-        margin: 0 auto 30px auto; /* Centrat */
-        height: auto;
-    }
-
-    /* 3. REPARATIE TEXT GENERAL */
-    p {
-        font-size: 1rem; /* Textul paragrafelor să fie citibil, nu imens */
-        padding: 0 10px;
-    }
-
-    /* Asigurare că nimic nu e mai lat decât ecranul */
-    img, video, canvas {
-        max-width: 100% !important;
-        height: auto;
-    }
-    /* 1. Resetăm Secțiunea și Containerul */
-    #mentors.about-section,
-    .about-section .container {
-        width: 100% !important;
-        max-width: 100vw !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-        box-sizing: border-box !important;
-        overflow-x: hidden !important;
-    }
-
-    /* 2. REPARĂM LAYOUT-UL (Aici era problema: tu ai .about-layout, nu .about-content) */
-    .about-layout {
-        display: flex !important;
-        flex-direction: column !important; /* Coloană forțată */
-        width: 100% !important;
-        gap: 40px !important;
-        margin: 0 !important;
-    }
-
-    /* 3. REPARĂM BLOCUL DE TEXT */
-    .about-text {
-        width: 100% !important;
-        min-width: 0 !important; /* <--- CRITIC: Anulăm acel 300px care strica tot */
-        flex: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* 4. REPARĂM TITLUL CARE IESE DIN ECRAN */
-    .section-title-light {
-        font-size: 1.8rem !important; /* Mai mic */
-        line-height: 1.3 !important;
-        width: 100% !important;
-        display: block !important; /* Ca să ocupe toată lățimea */
-        white-space: normal !important; /* Permite trecerea pe rândul următor */
-        word-wrap: break-word !important; /* Rupe cuvintele lungi */
-        text-align: left !important; /* Aliniat stânga */
-    }
-
-    /* 5. REPARĂM DESCRIEREA */
-    .about-desc {
-        font-size: 1rem !important;
-        text-align: left !important;
-        width: 100% !important;
-    }
-
-    /* 6. REPARĂM MENTORII (Să fie unul sub altul) */
-    .mentors-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        gap: 30px !important;
-    }
-
-    /* 7. Cardurile Mentorilor */
-    .flip-card {
-        width: 100% !important; /* Să ocupe tot ecranul pe lățime */
-        margin: 0 auto !important;
-    }
-}
-
-
-/*///////////////////////////////////////////////////////////////     JOIN US*/
-
-
-/* --- PAGINA JOIN & FORMULARE --- */
-/* --- HACKER TERMINAL STYLE --- */
-
-.join-section {
-    min-height: 100vh;
-    padding-top: 100px;
-    background-color: #050000; /* Negru aproape total */
-    display: flex;
-    justify-content: center;
     align-items: center;
-    font-family: 'Fira Code', monospace;
-}
-
-/* Fereastra Terminalului */
-.terminal-container {
-    width: 90%;
-    max-width: 800px;
-    background-color: rgba(10, 0, 0, 0.95);
-    border: 1px solid #333;
-    box-shadow: 0 0 50px rgba(196, 30, 58, 0.2);
-    border-radius: 6px;
-    overflow: hidden;
-    position: relative;
-}
-
-/* Header-ul ferestrei (stil macOS/Linux) */
-.terminal-header {
-    background-color: #1a0505;
-    padding: 10px 15px;
-    border-bottom: 1px solid #333;
-    display: flex;
-    align-items: center;
-}
-
-    .terminal-header .title {
-        color: #888;
-        font-size: 0.8rem;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-.buttons {
-    display: flex;
-    gap: 8px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.red {
-    background: #ff5f56;
-}
-
-.yellow {
-    background: #ffbd2e;
-}
-
-.green {
-    background: #27c93f;
-}
-
-/* Corpul terminalului */
-.terminal-body {
-    padding: 30px;
-    color: #ccc;
-    position: relative;
-    min-height: 400px;
-}
-
-/* Efectul CRT (Linii de scanare) - Asta dă vibe-ul retro */
-.scanline {
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background: linear-gradient(0deg, rgba(0,0,0,0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
-    background-size: 100% 2px, 3px 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none; /* Putem da click prin el */
-}
-
-/* Texte de output */
-.output {
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-}
-
-    .output.success {
-        color: var(--red-primary);
-    }
-
-.prompt-text {
-    color: #fff;
-    border-bottom: 1px dashed #444;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-/* Formularul Hacker */
-.terminal-input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
-
-.prompt-sign {
-    color: var(--red-primary);
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-.terminal-input-group label {
-    color: #888;
-    margin-right: 10px;
-    white-space: nowrap;
-}
-
-/* INPUT-URI INVIZIBILE (Stil Hacker) */
-.terminal-form input,
-.terminal-form select {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-family: 'Fira Code', monospace;
-    font-size: 1rem;
-    flex-grow: 1; /* Ocupă tot spațiul rămas */
-    outline: none;
-    border-bottom: 1px solid transparent; /* Invizibil normal */
-}
-
-    .terminal-form input:focus {
-        border-bottom: 1px solid var(--red-primary); /* Linie roșie la focus */
-        background-color: rgba(196, 30, 58, 0.1);
-    }
-
-/* Selectul e mai tricky, îl facem simplu */
-.terminal-select {
-    color: var(--red-primary);
-    cursor: pointer;
-}
-
-    .terminal-select option {
-        background-color: #000;
-        color: #fff;
-    }
-
-/* Butonul de Executare */
-.terminal-submit {
-    background: transparent;
-    border: 1px solid var(--red-primary);
-    color: var(--red-primary);
-    padding: 10px 20px;
-    font-family: 'Fira Code', monospace;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: all 0.3s;
-    text-align: left;
-    display: block;
-    width: 100%;
-}
-
-    .terminal-submit:hover {
-        background: var(--red-primary);
-        color: #000;
-        box-shadow: 0 0 20px var(--red-primary);
-    }
-
-.blinking-cursor {
-    animation: blink 1s infinite;
-}
-
-.form-wrapper {
-    background-color: rgba(18, 0, 0, 0.85); /* Fundal întunecat semi-transparent */
+    padding: 10px 40px;
+    background: rgba(18, 0, 0, 0.9);
     backdrop-filter: blur(10px);
-    padding: 40px;
-    border: 1px solid var(--red-dark);
-    max-width: 600px;
+    border-bottom: 1px solid rgba(196, 30, 58, 0.3);
+    position: fixed;
     width: 100%;
-    margin: 0 auto;
-    border-radius: 8px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    top: 0;
+    z-index: 1000;
+    height: 80px;
 }
 
-    .form-wrapper h1 {
-        font-size: 2rem;
-        color: var(--text-white);
-        margin-bottom: 10px;
-        text-align: center;
-    }
+.logo-link { display: flex; align-items: center; text-decoration: none; }
+.logo-img { height: 100px; width: auto; object-fit: contain; transition: transform 0.3s ease; }
+.logo-link:hover .logo-img { transform: scale(1.05); filter: drop-shadow(0 0 5px var(--red-primary)); }
+.logo { font-size: 1.5rem; color: var(--text-white); font-weight: bold; }
 
-.hacker-form {
-    margin-top: 30px;
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
 }
+.nav-links a { text-decoration: none; color: var(--text-white); font-family: 'Fira Code', monospace; font-size: 1.1rem; font-weight: 600; transition: color 0.3s; }
+.nav-links a:hover { color: var(--red-primary); }
+.nav-links a.active-link { color: var(--red-primary); text-shadow: 0 0 10px var(--red-primary); position: relative; }
+.nav-links a.active-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background-color: var(--red-primary); box-shadow: 0 0 10px var(--red-primary); }
 
-.form-group {
-    margin-bottom: 20px;
-}
+.hamburger { display: none; cursor: pointer; }
+.bar { display: block; width: 25px; height: 3px; margin: 5px auto; transition: all 0.3s ease-in-out; background-color: white; }
 
-    .form-group label {
-        display: block;
-        color: var(--red-primary);
-        margin-bottom: 8px;
-        font-size: 0.9rem;
-    }
-
-/* Stiluri pentru Input-uri (Casuțe de text) */
-input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    background-color: rgba(0,0,0,0.5);
-    border: 1px solid #333;
-    color: var(--text-white);
-    font-family: 'Fira Code', monospace;
-    font-size: 1rem;
-    outline: none;
-    border-radius: 4px;
-    transition: all 0.3s;
-}
-
-    /* Când dai click în căsuță (Focus) */
-    input:focus, select:focus, textarea:focus {
-        border-color: var(--red-primary);
-        box-shadow: 0 0 10px rgba(196, 30, 58, 0.3);
-        background-color: rgba(0,0,0,0.8);
-    }
-
-/* Butonul de trimitere */
-.btn-submit {
-    width: 100%;
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* --- ANIMATIE CURSOR --- */
-/* Definim mișcarea de clipire */
-@keyframes blink-animation {
-    0%, 100% {
-        opacity: 1;
-    }
-    /* Vizibil */
-    50% {
-        opacity: 0;
-    }
-    /* Invizibil */
-}
-
-/* Clasa pe care o vom aplica cursorului */
-.blinking-cursor {
-    color: var(--red-primary); /* Culoarea roșie */
-    font-weight: bold;
-    display: inline-block;
-    animation: blink-animation 1s step-end infinite; /* Aplicăm animația la infinit */
-}
-
-
-/* --- INFINITE MARQUEE --- */
-.marquee-container {
-    background: var(--red-primary);
-    color: #000;
-    padding: 15px 0;
-    overflow: hidden; /* Ascunde ce iese din ecran */
-    white-space: nowrap; /* Textul nu trece pe rândul următor */
+/* ==========================================================================
+   5. BUTTONS (Global Styles)
+   ========================================================================== */
+.btn, .nav-btn-cta, .terminal-submit, .btn-submit, .btn-secondary {
     position: relative;
-    z-index: 5;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease;
+    display: inline-block;
+    padding: 15px 30px;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.nav-btn-cta { padding: 10px 25px; font-size: 1.1rem; background-color: var(--red-primary); }
+.nav-btn-cta:hover { background-color: white !important; color: var(--bg-dark) !important; }
+
+.btn-primary { background-color: var(--red-primary); color: white; border: 2px solid var(--red-primary); }
+.btn-primary:hover { background-color: var(--red-dark); border-color: var(--red-dark); box-shadow: 0 0 15px var(--red-primary); }
+
+.btn-secondary { background-color: transparent; color: white; border: 2px solid white; }
+.btn-secondary:hover { background-color: white; color: var(--bg-dark); }
+
+.btn::before, .nav-btn-cta::before, .terminal-submit::before, .btn-submit::before, .btn-secondary::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transition: all 0.6s ease; z-index: -1;
+}
+.btn:hover::before, .nav-btn-cta:hover::before, .terminal-submit:hover::before, .btn-submit:hover::before, .btn-secondary:hover::before { left: 100%; }
+.btn-secondary::before { background: linear-gradient(120deg, transparent, var(--red-primary), transparent); opacity: 0.8; }
+.btn:active, .btn-card:active { transform: scale(0.95); }
+
+
+
+/* ==========================================================================
+   BUTON JOIN US (CENTRAT PE MOBIL)
+   ========================================================================== */
+.btn-mobile-nav {
+    display: none; /* Ascuns complet pe monitoare/PC */
+}
+
+/* ==========================================================================
+   6. HERO SECTION
+   ========================================================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+    background: transparent;
+}
+
+.hero-video-bg {
+    position: fixed;
+    top: 50%; left: 50%;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -2;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(5, 0, 0, 0.4) 0%, rgba(5, 0, 0, 0.7) 80%, #050000 100%);
+    z-index: -1;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 1200px; text-align: center; transition: transform 0.1s ease-out; }
+.logo-placeholder { position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: var(--red-primary); font-weight: bold; z-index: 3; }
+h1 { font-size: 4rem; margin-bottom: 20px; line-height: 1.1; text-shadow: 3px 3px 0px var(--red-dark); }
+p.subtitle { font-size: 1.2rem; color: #d1d1d1; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; font-weight: 400; }
+.hero-buttons { display: flex; gap: 40px; justify-content: center; align-items: center; margin-top: 30px; flex-wrap: wrap; }
+.glowing-text { color: #fff; text-shadow: 0 0 5px rgba(196, 30, 58, 0.5), 0 0 10px rgba(196, 30, 58, 0.3), 0 0 20px rgba(196, 30, 58, 0.2); animation: neon-pulse 3s infinite alternate; }
+@keyframes neon-pulse { from { text-shadow: 0 0 5px rgba(196, 30, 58, 0.5), 0 0 10px rgba(196, 30, 58, 0.3); } to { text-shadow: 0 0 10px rgba(196, 30, 58, 0.8), 0 0 20px rgba(196, 30, 58, 0.5), 0 0 30px rgba(196, 30, 58, 0.3); } }
+
+/* ==========================================================================
+   7. SECTIONS & GRIDS (EVENTS & ABOUT)
+   ========================================================================== */
+.container { max-width: 1200px; margin: 0 auto; }
+.section-title { font-size: 2.5rem; margin-bottom: 50px; border-bottom: 2px solid var(--red-dark); padding-bottom: 10px; display: inline-block; }
+.section-title-light { font-size: 2.5rem; color: #120000; margin-bottom: 30px; border-bottom: 3px solid var(--red-primary); display: inline-block; }
+
+.events-section { padding: 80px 20px; background-color: #0a0000; }
+.events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+.event-card {
+    background-color: #1a0505; border: 1px solid var(--red-dark); border-radius: 8px; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;
+}
+.event-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(196, 30, 58, 0.15); border-color: var(--red-primary); }
+
+.card-image-wrapper, .card-image { height: 200px; width: 100%; position: relative; background-color: #000; overflow: hidden; }
+.card-img-real, .img-placeholder, .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.event-card:hover .card-image .img-placeholder, .event-card:hover .card-image img, .event-card:hover .card-img-real { transform: scale(1.1); }
+
+.event-tag { position: absolute; top: 15px; right: 15px; background-color: var(--red-primary); color: white; padding: 5px 10px; font-size: 0.8rem; font-weight: bold; border-radius: 4px; box-shadow: 0 0 10px var(--red-primary); }
+.tag-conference { background-color: var(--red-deep); }
+.card-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+.event-title { font-size: 1.5rem; margin-bottom: 15px; line-height: 1.2; color: var(--text-white); }
+.event-details { display: flex; gap: 15px; font-size: 0.9rem; color: #bbb; margin-bottom: 15px; font-family: 'Fira Code', monospace; }
+.event-desc { font-size: 0.95rem; color: #d1d1d1; margin-bottom: 25px; line-height: 1.6; flex-grow: 1; }
+.btn-card { display: inline-block; text-decoration: none; color: var(--red-primary); font-weight: bold; font-family: 'Fira Code', monospace; border: 1px solid var(--red-primary); padding: 10px 0; text-align: center; border-radius: 4px; transition: background 0.3s ease; }
+.btn-card:hover { background-color: var(--red-primary); color: white; }
+
+/* About Section */
+.about-section { background-color: var(--bg-light); color: #120000; padding: 80px 20px; }
+.about-layout { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; }
+.about-text { flex: 1; min-width: 300px; }
+.about-desc { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; color: #333; }
+.stats-row { display: flex; gap: 40px; margin-top: 30px; }
+.stat-number { font-size: 2.5rem; color: var(--red-primary); display: block; text-shadow: 0 0 15px rgba(196, 30, 58, 0.4); }
+.stat-label { font-size: 0.9rem; font-weight: bold; color: #555; }
+
+/* ==========================================================================
+   8. MENTORS & TEAM (Flip Cards)
+   ========================================================================== */
+.team-grid-full { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; width: 100%; margin-top: 30px; padding-bottom: 50px; }
+.team-header { text-align: center; width: 100%; margin-bottom: 20px; }
+.team-header h2 { font-size: 2.5rem; display: inline-block; border-bottom: 3px solid var(--red-primary); padding-bottom: 10px; }
+@media screen and (min-width: 1600px) { .team-grid-full { grid-template-columns: repeat(5, 1fr); } }
+
+.flip-card { background-color: transparent; width: 100%; height: 320px; perspective: 1000px; cursor: pointer; }
+.flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid rgba(0,0,0,0.1); }
+.flip-card-front { background-color: #fff; color: #120000; }
+.flip-card-front {
+    padding: 0 15px; /* Dăm 15px de aer în stânga și dreapta ca să nu se lovească de margini */
+    text-align: center;
+}
+.flip-card-front h2,
+.flip-card-front h3,
+.flip-card-front h4 {
+    font-size: 1.4rem; /* Îl facem o idee mai mic (ajustează aici dacă vrei mai mare) */
+    width: 100%;
+    word-wrap: break-word; /* Dacă un nume e absurd de lung, îl rupe */
+    overflow-wrap: break-word;
+    white-space: normal; /* Îi dă voie să treacă pe rândul 2 */
+    line-height: 1.1; /* Micșorăm spațiul dintre rânduri dacă numele se împarte pe 2 linii */
+    margin-bottom: 5px;
+}
+.flip-card-front p {
+    width: 100%;
+    white-space: normal;
+    font-size: 0.9rem;
+}
+.mentor-img-wrapper { width: 100px; height: 100px; margin-bottom: 15px; }
+.mentor-img-real { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 3px solid var(--red-primary); transition: transform 0.3s; }
+.decoration-line { width: 50px; height: 3px; background-color: var(--red-primary); margin-top: 15px; }
+
+.flip-card-back { background-color: #1a0505; color: white; transform: rotateY(180deg); border: 1px solid var(--red-primary); padding: 20px; align-items: stretch; }
+.flip-card-back h5 { text-align: center; margin-bottom: 20px; color: var(--red-primary); border-bottom: 1px dashed #555; padding-bottom: 5px; }
+.skill-container { margin-bottom: 12px; }
+.skill-label { display: flex; justify-content: space-between; font-size: 0.8rem; font-family: 'Fira Code', monospace; margin-bottom: 3px; color: #ccc; }
+.progress-bar-bg { width: 100%; height: 6px; background-color: #333; border-radius: 3px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background-color: var(--red-primary); box-shadow: 0 0 5px var(--red-primary); }
+.mentor-socials { margin-top: auto; display: flex; justify-content: center; gap: 15px; }
+.mentor-socials a { color: white; font-size: 0.8rem; text-decoration: none; font-family: 'HACKED', sans-serif; border: 1px solid white; padding: 5px 10px; transition: 0.3s; }
+.mentor-socials a:hover { background-color: var(--red-primary); border-color: var(--red-primary); }
+
+/* ==========================================================================
+   9. SPONSORS (TV Effect & Horizontal Scroll)
+   ========================================================================== */
+.horizontal-scroll-section { height: 250vh; position: relative; background-color: var(--bg-dark); z-index: 10; }
+.sticky-wrapper { position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.sponsors-header { position: absolute; top: 5%; left: 5%; z-index: 20; }
+
+.tv-screen-container {
+    width: 100%; height: 55vh; position: relative; display: flex; align-items: center; background: #050505; border: 4px solid #333; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.8); overflow: hidden; margin-top: 20px;
+    transform: scaleY(0.01) scaleX(0.8); opacity: 0.2; filter: brightness(0); transition: transform 0.5s ease;
+}
+.tv-active { animation: turn-on 0.6s cubic-bezier(0.23, 1.00, 0.32, 1.00) forwards; border-color: var(--red-primary); }
+@keyframes turn-on { 0% { transform: scaleY(0.01) scaleX(0.8); opacity: 0.4; filter: brightness(5); } 40% { transform: scaleY(0.01) scaleX(1); filter: brightness(5); opacity: 0.8; } 100% { transform: scaleY(1) scaleX(1); opacity: 1; filter: brightness(1); } }
+
+.horizontal-track { display: flex; gap: 50px; padding: 0 100px; width: max-content; will-change: transform; animation: crt-flicker 0.15s infinite; }
+.crt-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient( rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50% ); background-size: 100% 4px; pointer-events: none; z-index: 5; }
+@keyframes crt-flicker { 0% { opacity: 0.95; } 50% { opacity: 1; } 100% { opacity: 0.98; } }
+.sponsor-card { width: 300px; height: 350px; background: rgba(20, 20, 20, 0.9); border: 1px solid var(--red-primary); display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
+
+/* ==========================================================================
+   ♾️ INFINITE SEAMLESS MARQUEE (METODA SUPREMĂ)
+   ========================================================================== */
+.marquee-container {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    background: var(--red-primary);
+    padding: 10px 0;
+    color: #000;
 }
 
 .marquee-content {
-    display: inline-block;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%; /* Forțăm cutia să fie minim cât ecranul */
+    animation: scroll-left 15s linear infinite;
     font-size: 1.2rem;
     font-weight: bold;
-    animation: scroll-left 20s linear infinite; /* Viteza de curgere */
+    padding-right: 15px; /* Distanța dintre prima și a doua cutie */
 }
 
 @keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-33.33%);
-    }
-    /* Se mută o treime (lungimea unui set de text) */
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); } /* Merge spre stânga până iese toată */
 }
 
+/* ==========================================================================
+   10. JOIN US & TERMINAL FORM
+   ========================================================================== */
+.join-section { min-height: 100vh; padding-top: 100px; background-color: #050000; display: flex; justify-content: center; align-items: center; font-family: 'Fira Code', monospace; }
+.terminal-container { width: 90%; max-width: 800px; background-color: rgba(10, 0, 0, 0.95); border: 1px solid #333; box-shadow: 0 0 50px rgba(196, 30, 58, 0.2); border-radius: 6px; overflow: hidden; position: relative; }
+.terminal-header { background-color: #1a0505; padding: 10px 15px; border-bottom: 1px solid #333; display: flex; align-items: center; }
+.terminal-header .title { color: #888; font-size: 0.8rem; margin-left: auto; margin-right: auto; }
+.buttons { display: flex; gap: 8px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
 
-/* ---------------------------------------- 404 PAGE STYLES ----------------------------- */
-.error-page {
-    height: 100vh;
-    width: 100%;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-image: url('../assets/img/bg-marble.jpg'); /* Textura ta */
-    background-blend-mode: overlay;
-}
+.terminal-body { padding: 30px; color: #ccc; position: relative; min-height: 400px; }
+.scanline { width: 100%; height: 100%; z-index: 10; background: linear-gradient(0deg, rgba(0,0,0,0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06)); background-size: 100% 2px, 3px 100%; position: absolute; top: 0; left: 0; pointer-events: none; }
+.output { margin-bottom: 5px; font-size: 0.9rem; }
+.output.success { color: var(--red-primary); }
+.prompt-text { color: #fff; border-bottom: 1px dashed #444; padding-bottom: 10px; display: inline-block; }
 
-.error-code {
-    font-size: 8rem;
-    color: var(--red-primary);
-    margin: 0;
-    line-height: 1;
-}
+.terminal-input-group { display: flex; align-items: center; margin-bottom: 15px; flex-wrap: wrap; }
+.prompt-sign { color: var(--red-primary); margin-right: 10px; font-weight: bold; }
+.terminal-input-group label { color: #888; margin-right: 10px; white-space: nowrap; }
+.terminal-form input, .terminal-form select { background: transparent; border: none; color: #fff; font-family: 'Fira Code', monospace; font-size: 1rem; flex-grow: 1; outline: none; border-bottom: 1px solid transparent; }
+.terminal-form input:focus { border-bottom: 1px solid var(--red-primary); background-color: rgba(196, 30, 58, 0.1); }
+.terminal-select { color: var(--red-primary); cursor: pointer; }
+.terminal-select option { background-color: #000; color: #fff; }
+.terminal-submit { background: transparent; border: 1px solid var(--red-primary); color: var(--red-primary); padding: 10px 20px; font-family: 'Fira Code', monospace; font-weight: bold; cursor: pointer; margin-top: 20px; transition: all 0.3s; text-align: left; display: block; width: 100%; }
+.terminal-submit:hover { background: var(--red-primary); color: #000; box-shadow: 0 0 20px var(--red-primary); }
 
-.error-msg {
-    font-family: 'Fira Code', monospace;
-    font-size: 1.5rem;
-    color: white;
-    margin-top: 10px;
-    letter-spacing: 2px;
-}
+.blinking-cursor { animation: blink-animation 1s step-end infinite; color: var(--red-primary); font-weight: bold; display: inline-block; }
+@keyframes blink-animation { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-.console-text {
-    font-family: 'Fira Code', monospace;
+.checkbox-container { display: flex; flex-direction: column; gap: 8px; margin-left: 10px; }
+
+/* 1. Aliniem căsuța SUS (flex-start) ca să stea pe primul rând al textului */
+.terminal-checkbox { cursor: pointer; font-family: 'Fira Code', monospace; color: #ccc; display: flex; align-items: flex-start; gap: 10px; transition: color 0.3s; }
+.terminal-checkbox input { display: none; }
+
+/* 2. REPARAȚIA: Interzicem browserului să strivească sau să rupă parantezele! */
+.checkmark { flex-shrink: 0; white-space: nowrap; display: inline-block; }
+
+.checkmark::before { content: "[ ]"; margin-right: 5px; color: var(--red-primary); font-weight: bold; font-size: 1.1rem; }
+.terminal-checkbox input:checked + .checkmark::before { content: "[X]"; color: #00FF41; text-shadow: 0 0 5px #00FF41; }
+.terminal-checkbox:hover { color: white; }
+/* ==========================================================================
+   11. OVERLAYS, MODALS & 404
+   ========================================================================== */
+#terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #050000; z-index: 999999; display: none; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 50px; font-family: 'Fira Code', monospace; overflow: hidden; cursor: wait; }
+.term-line { color: var(--red-primary); font-size: 1.1rem; margin-bottom: 5px; opacity: 0; animation: fadeInTerm 0.1s forwards; text-shadow: 0 0 5px var(--red-primary); }
+.term-highlight { color: #fff; font-weight: bold; }
+@keyframes fadeInTerm { to { opacity: 1; } }
+
+.event-modal { display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(5, 0, 0, 0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+.event-modal.show { display: flex; opacity: 1; }
+.modal-content { background-color: #1a0505; border: 1px solid var(--red-primary); border-radius: 8px; width: 90%; max-width: 600px; padding: 30px; position: relative; box-shadow: 0 0 30px rgba(196, 30, 58, 0.4); transform: translateY(-30px); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
+.event-modal.show .modal-content { transform: translateY(0); }
+.close-modal {
     color: #888;
-    margin-bottom: 40px;
-}
-
-.btn-home {
-    display: inline-block;
-    padding: 15px 30px;
-    border: 2px solid var(--red-primary);
-    color: var(--red-primary);
-    text-decoration: none;
-    font-family: 'HACKED', sans-serif;
-    font-size: 1.2rem;
-    transition: all 0.3s;
-}
-
-    .btn-home:hover {
-        background-color: var(--red-primary);
-        color: #000;
-        box-shadow: 0 0 30px var(--red-primary);
-    }
-
-
-    /* ------------------------------------MENTORI-------------------------------- */
-
-
-/* --- 3D FLIP CARDS MENTORI --- */
-
-/* Containerul principal */
-.flip-card {
-    background-color: transparent;
-    width: 100%;
-    height: 320px; /* Înălțime fixă */
-    perspective: 1000px; /* Esențial pentru efectul 3D */
-    cursor: pointer;
-}
-
-/* Containerul interior care se rotește */
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-/* Acțiunea de rotire la Hover */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-/* Stiluri comune pentru Față și Spate */
-.flip-card-front, .flip-card-back {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden; /* Ascunde spatele când ești pe față */
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgba(0,0,0,0.1);
-}
-
-/* --- FAȚA CARDULUI (Light Mode - cum era înainte) --- */
-.flip-card-front {
-    background-color: #fff;
-    color: #120000;
-}
-
-.mentor-img-wrapper {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
-}
-
-/* Folosim stilurile de imagine create anterior */
-.mentor-img-real {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--red-primary);
-}
-
-.decoration-line {
-    width: 50px;
-    height: 3px;
-    background-color: var(--red-primary);
-    margin-top: 15px;
-}
-
-/* --- SPATELE CARDULUI (Dark/Hacker Mode) --- */
-.flip-card-back {
-    background-color: #1a0505; /* Dark Burgundy */
-    color: white;
-    transform: rotateY(180deg); /* E deja rotit ca să fie pe spate */
-    border: 1px solid var(--red-primary);
-    padding: 20px;
-    align-items: stretch; /* Să ocupe lățimea */
-}
-
-    .flip-card-back h5 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: var(--red-primary);
-        border-bottom: 1px dashed #555;
-        padding-bottom: 5px;
-    }
-
-/* Skill Bars */
-.skill-container {
-    margin-bottom: 12px;
-}
-
-.skill-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    font-family: 'Fira Code', monospace;
-    margin-bottom: 3px;
-    color: #ccc;
-}
-
-.progress-bar-bg {
-    width: 100%;
-    height: 6px;
-    background-color: #333;
-    border-radius: 3px;
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    background-color: var(--red-primary);
-    box-shadow: 0 0 5px var(--red-primary); /* Glow effect */
-}
-
-/* Social Links pe spate */
-.mentor-socials {
-    margin-top: auto; /* Împinge jos de tot */
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-    .mentor-socials a {
-        color: white;
-        font-size: 0.8rem;
-        text-decoration: none;
-        font-family: 'HACKED', sans-serif;
-        border: 1px solid white;
-        padding: 5px 10px;
-        transition: 0.3s;
-    }
-
-        .mentor-socials a:hover {
-            background-color: var(--red-primary);
-            border-color: var(--red-primary);
-        }
-
-
-
-/* --- TERMINAL TRANSITION LOADER --- */
-#terminal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #050000; /* Negru aproape total */
-    z-index: 999999; /* Peste ORICE, inclusiv navbar */
-    display: none; /* Ascuns implicit */
-    flex-direction: column;
-    justify-content: flex-end; /* Textul apare jos și urcă */
-    align-items: flex-start;
-    padding: 50px;
-    font-family: 'Fira Code', monospace;
-    overflow: hidden;
-    cursor: wait;
-}
-
-.term-line {
-    color: var(--red-primary);
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    opacity: 0; /* Invizibil la început */
-    animation: fadeInTerm 0.1s forwards; /* Apare instant */
-    text-shadow: 0 0 5px var(--red-primary);
-}
-
-.term-highlight {
-    color: #fff;
+    top: 15px;
+    left: 20px; /* 🔧 Mutat din Right în Left! */
+    right: auto; /* Siguranță să anuleze regulile vechi */
+    font-size: 35px;
+    line-height: 1;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 999;
 }
 
-@keyframes fadeInTerm {
-    to {
-        opacity: 1;
-    }
+.close-modal:hover {
+    color: var(--red-primary);
+    text-shadow: 0 0 10px var(--red-primary);
 }
 
-/* Pe mobil textul mai mic */
-@media screen and (max-width: 768px) {
-    #terminal-overlay {
-        padding: 20px;
-    }
+.modal-header h3 {
+    font-size: 2.2rem;
+    color: var(--text-white);
+    margin: 15px 0 10px 0;
+    padding-left: 40px; /* 🔧 Împingem titlul un pic mai la dreapta ca să facă loc X-ului */
+}
+.modal-meta { margin-bottom: 20px; border-bottom: 1px dashed #444; padding-bottom: 15px; display: flex; gap: 20px; }
+.modal-img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; border: 1px solid #333; margin-bottom: 20px; }
+.modal-desc { font-size: 1rem; line-height: 1.6; color: #ccc; margin-bottom: 30px; }
 
-    .term-line {
-        font-size: 0.9rem;
-    }
+/* 404 Error Page */
+.error-page { height: 100vh; width: 100%; background-color: #000; display: flex; justify-content: center; align-items: center; text-align: center; background-image: url('../assets/img/bg-marble.jpg'); background-blend-mode: overlay; }
+.error-code { font-size: 8rem; color: var(--red-primary); margin: 0; line-height: 1; }
+.error-msg { font-family: 'Fira Code', monospace; font-size: 1.5rem; color: white; margin-top: 10px; letter-spacing: 2px; }
+.btn-home { display: inline-block; padding: 15px 30px; border: 2px solid var(--red-primary); color: var(--red-primary); text-decoration: none; font-family: 'HACKED', sans-serif; font-size: 1.2rem; transition: all 0.3s; }
+.btn-home:hover { background-color: var(--red-primary); color: #000; box-shadow: 0 0 30px var(--red-primary); }
+
+/* ==========================================================================
+   12. FOOTER
+   ========================================================================== */
+.site-footer { background-color: var(--bg-dark); color: var(--text-white); border-top: 5px solid var(--red-dark); padding-top: 60px; }
+.footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; padding-bottom: 40px; padding-left: 20px; padding-right: 20px;}
+.footer-col { flex: 1; min-width: 200px; }
+.logo-text { color: var(--red-primary); font-size: 1.8rem; margin-bottom: 15px; }
+.footer-col h4 { margin-bottom: 20px; color: #bbb; border-left: 3px solid var(--red-primary); padding-left: 10px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: #888; text-decoration: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--red-primary); padding-left: 5px; }
+.social-btn { display: inline-block; margin-right: 15px; color: white; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid var(--red-primary); }
+.footer-bottom { background-color: #000; padding: 20px; text-align: center; font-size: 0.8rem; color: #555; display: flex; justify-content: space-between; padding-left: 10%; padding-right: 10%; }
+.console-log { font-family: 'Fira Code', monospace; color: var(--red-dark); }
+
+/* ==========================================================================
+   13. MATRIX MODE (Konami Code Activation)
+   ========================================================================== */
+body.matrix-mode { --red-primary: #00FF41 !important; --red-dark: #003B00 !important; --bg-dark: #000000 !important; --text-white: #00FF41 !important; font-family: 'Courier New', monospace !important; }
+body.matrix-mode .navbar { background: rgba(0, 10, 0, 0.95) !important; border-bottom: 1px solid #00FF41; box-shadow: 0 0 15px rgba(0, 255, 65, 0.5); }
+body.matrix-mode .event-card, body.matrix-mode .sponsor-card, body.matrix-mode .flip-card-back, body.matrix-mode .terminal-container { background: rgba(0, 15, 0, 0.95) !important; border-color: #00FF41 !important; color: #00FF41 !important; box-shadow: 0 0 10px rgba(0, 255, 65, 0.2); }
+body.matrix-mode .tv-screen-container { border-color: #00FF41 !important; box-shadow: 0 0 30px rgba(0, 255, 65, 0.3); }
+body.matrix-mode .hero-overlay { background: rgba(0, 0, 0, 0.3) !important; }
+body.matrix-mode .btn-primary, body.matrix-mode .nav-btn-cta { background-color: #000 !important; color: #00FF41 !important; border: 1px solid #00FF41 !important; box-shadow: 0 0 10px #00FF41; }
+
+/* ==========================================================================
+   SECURITATE & COMPONENTE FORMULAR
+   ========================================================================== */
+.honeypot-field {
+    opacity: 0; 
+    position: absolute; 
+    top: -9999px; 
+    left: -9999px;
 }
 
-/* --- HORIZONTAL SCROLL + TV EFFECT --- */
-.horizontal-scroll-section {
-    height: 250vh; /* Spațiu mare pentru scroll */
-    position: relative;
-    background-color: var(--bg-dark);
-    z-index: 10;
-}
-
-.sticky-wrapper {
-    position: sticky;
-    top: 0;
-    height: 100vh;
+.terminal-group-gdpr {
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin: 30px 0; 
     width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Centrat perfect */
 }
 
-.sponsors-header {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    z-index: 20;
+.gdpr-label {
+    color: white; 
+    font-weight: bold; 
+    margin-bottom: 10px;
 }
 
-/* --- TV SCREEN CONTAINER --- */
-/* --- TV SCREEN CONTAINER (FIXED VISIBILITY) --- */
-.tv-screen-container {
-    width: 100%;
-    /* Mai scădem puțin înălțimea ca să încapă sigur pe ecrane mici */
-    height: 55vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #050505; /* Negru, dar nu total */
-    border: 4px solid #333; /* RAMA TV: O vezi și când e stins */
-    border-radius: 10px; /* Colțuri rotunjite */
-    box-shadow: 0 0 20px rgba(0,0,0,0.8);
-    overflow: hidden;
-    margin-top: 20px;
-    /* Starea inițială: TV STINS */
-    /* Îl facem foarte îngust (o linie), dar vizibil puțin */
-    transform: scaleY(0.01) scaleX(0.8);
-    opacity: 0.2; /* Se vede o umbră a ecranului stins */
-    filter: brightness(0);
-    transition: transform 0.5s ease; /* Fallback */
+.gdpr-scroll-box {
+    width: 100%; 
+    height: 130px; 
+    overflow-y: auto; 
+    background: rgba(0,0,0,0.6); 
+    border: 1px dashed #444; 
+    padding: 15px; 
+    margin-bottom: 20px; 
+    font-size: 0.8rem; 
+    color: #aaa; 
+    line-height: 1.6; 
+    border-radius: 4px;
 }
 
-/* Clasa ACTIVĂ (Când se aprinde) */
-.tv-active {
-    animation: turn-on 0.6s cubic-bezier(0.23, 1.00, 0.32, 1.00) forwards;
-    border-color: var(--red-primary); /* Rama se face roșie când e aprins */
+.checkbox-wrapper {
+    display: flex; 
+    align-items: flex-start; /* Ține căsuța [ ] sus, chiar dacă textul e lung */
+    gap: 10px; 
+    cursor: pointer; 
+    margin-bottom: 15px;
+    width: 100%; /* Îi spunem să respecte marginile ecranului */
 }
 
-@keyframes turn-on {
-    0% {
-        transform: scaleY(0.01) scaleX(0.8);
-        opacity: 0.4;
-        filter: brightness(5);
-    }
-
-    40% {
-        transform: scaleY(0.01) scaleX(1); /* Se lățește linia */
-        filter: brightness(5);
-        opacity: 0.8;
-    }
-
-    100% {
-        transform: scaleY(1) scaleX(1); /* Se deschide complet */
-        opacity: 1;
-        filter: brightness(1);
-    }
+.checkbox-text {
+    font-size: 0.85rem; 
+    color: #ccc; 
+    line-height: 1.4; 
+    text-align: left;
+    flex: 1; /* Permite textului să "respire" doar în spațiul rămas, forțând ruperea rândului */
+    white-space: normal !important; /* Forțăm textul să coboare pe rândul următor! */
+    word-wrap: break-word; /* Protecție extra pentru telefoane mici */
 }
 
-/* --- BANDA ORIZONTALĂ --- */
-.horizontal-track {
-    display: flex;
-    gap: 50px;
-    padding: 0 100px;
-    width: max-content;
-    will-change: transform;
-    /* Adăugăm un mic flicker (pâlpâire) continuu */
-    animation: crt-flicker 0.15s infinite;
+.event-target-select {
+    font-weight: bold; 
+    color: var(--red-primary);
 }
 
-/* --- EFECT CRT (Linii de scanare) --- */
-.crt-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient( rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50% );
-    background-size: 100% 4px; /* Linii fine */
-    pointer-events: none; /* Să putem da click prin ele */
-    z-index: 5;
+.modal-footer-btn {
+    text-align: center; 
+    text-decoration: none;
 }
 
-@keyframes crt-flicker {
-    0% {
-        opacity: 0.95;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0.98;
-    }
+.event-target-group {
+    margin-bottom: 30px; 
+    border-bottom: 1px dashed #333; 
+    padding-bottom: 15px;
 }
 
-/* Cardurile (Stilul tău vechi) */
-.sponsor-card {
-    width: 300px;
-    height: 350px; /* Puțin mai mici să încapă în ecran */
-    background: rgba(20, 20, 20, 0.9);
-    border: 1px solid var(--red-primary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.event-target-label {
     color: white;
-    flex-shrink: 0; /* Să nu se strivească */
 }
 
-/* Mobil */
+.red-slash {
+    color: var(--red-primary);
+}
+
+.team-subtitle {
+    margin-top: 10px; 
+    color: #666;
+}
+
+
+/* ==========================================================================
+   🔒 LOCKED / ENCRYPTED EVENTS
+   ========================================================================== */
+.locked-event {
+    position: relative;
+    pointer-events: none; /* Îi împiedicăm să dea click pe butonul de Detalii */
+    user-select: none; /* Nu îi lăsăm să copieze textul de dedesubt */
+}
+
+/* Blurăm doar conținutul cardului, ca marginile (border-ul) să rămână clare */
+.locked-event .card-image-wrapper,
+.locked-event .card-content {
+    filter: blur(8px) grayscale(60%); /* Blur puternic + îi luăm din culoare */
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+/* Fereastra de deasupra cu lacătul */
+.lock-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.lock-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(196, 30, 58, 0.8)); /* Glow roșu în jurul lacătului */
+}
+
+.lock-text {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: var(--red-primary);
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px dashed var(--red-primary);
+    box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
+}
+
+
+
+
+/* ==========================================================================
+   📱 14. MASTER MOBILE RESPONSIVENESS (MAX-WIDTH: 768px)
+   ========================================================================== */
 @media screen and (max-width: 768px) {
+    /* Setări Generale */
+    html, body { overflow-x: hidden; width: 100%; }
+    h1 { font-size: 2.2rem !important; line-height: 1.2; }
+    h2, .section-title, .section-title-light, .team-header h2 { font-size: 1.8rem !important; line-height: 1.3; word-wrap: break-word; }
+    p { font-size: 0.95rem; }
+
+    /* Navbar & Hamburger */
+    .navbar { 
+        padding: 10px 20px; 
+        height: 70px; 
+        position: relative; /* Adăugat pentru a putea centra butonul față de bară */
+    }
+    .logo-img { height: 40px; }
+    .btn-mobile-nav {
+        /* 1. ANULĂM LĂȚIMEA DE 100% A CLASEI .BTN */
+        width: auto !important; 
+        min-width: 0 !important;
+        display: inline-block !important;
+        
+        /* 2. Poziționare și Centrare */
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 990 !important; 
+        white-space: nowrap !important;
+
+        /* 3. Design și Dimensiuni (Mici și elegante) */
+        background-color: var(--red-primary, #C41E3A) !important;
+        color: #ffffff !important;
+        border: 1px solid var(--red-primary, #C41E3A) !important;
+        text-decoration: none !important;
+        border-radius: 3px !important;
+        box-shadow: 0 0 5px rgba(196, 30, 58, 0.5) !important;
+        text-transform: uppercase !important;
+        font-weight: bold !important;
+        font-size: 0.8rem !important; 
+        padding: 5px 12px !important; 
+        letter-spacing: 0.5px !important;
+    }
+    .hamburger { display: block; cursor: pointer; z-index: 1000; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 75%;
+        height: 100vh;
+        background-color: #0d0d0d;
+        border-left: 2px solid var(--red-primary);
+        flex-direction: column;
+        
+        /* 🔧 REPARAȚII PENTRU SCROLL ÎN MENIU */
+        justify-content: flex-start; 
+        padding-top: 120px; 
+        padding-bottom: 50px; 
+        overflow-y: auto; 
+        
+        align-items: center;
+        transition: right 0.4s ease-in-out;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.8);
+        z-index: 999;
+        margin: 0;
+    }
+    .nav-links.active { right: 0; }
+    .nav-links li { margin: 20px 0; }
+
+    /* Hero Section */
+    .hero { height: auto; min-height: 100vh; padding-top: 100px; padding-bottom: 50px; }
+    .hero-buttons { flex-direction: column; gap: 15px; width: 100%; padding: 0 20px; }
+    .btn, .btn-secondary { width: 100%; max-width: 300px; text-align: center; margin: 0 auto; display: block; }
+
+    /* Grids (Evenimente, Echipa) */
+    .events-grid, .team-grid-full, .mentors-grid { grid-template-columns: 1fr !important; gap: 20px; padding: 0 15px; }
+
+    /* About Section */
+    #mentors.about-section, .about-section .container { padding: 40px 15px !important; }
+    .about-layout { flex-direction: column !important; gap: 30px !important; }
+    .about-text { width: 100% !important; min-width: 0 !important; padding: 0 !important; text-align: left; }
+    .stats-row { flex-direction: column; gap: 20px; align-items: flex-start; }
+
+    /* --- SECȚIUNEA SPONSORI (Scroll Orizontal NATIV prin Swipe) --- */
     .horizontal-scroll-section {
         height: auto;
+        padding: 50px 0; 
     }
 
     .sticky-wrapper {
         position: relative;
         height: auto;
-        padding: 50px 0;
+        padding: 0;
+        display: block; 
+    }
+
+    .sponsors-header {
+        position: relative;
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin-bottom: 20px;
+        width: 100%;
+        padding: 0 15px;
+        z-index: 20;
     }
 
     .tv-screen-container {
         height: auto;
-        transform: none;
-        opacity: 1;
-        flex-direction: column;
-        background: transparent;
+        transform: none !important;
+        opacity: 1 !important;
+        background: #050505;
+        border: 4px solid var(--red-primary);
+        box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
+        padding: 20px 0; 
+        border-radius: 10px;
+        width: 95%;
+        margin: 0 auto;
     }
 
     .horizontal-track {
-        flex-direction: column;
+        flex-direction: row; 
         width: 100%;
-        padding: 0;
-        animation: none;
+        padding: 10px 15px;
+        animation: none; 
+        transform: none !important; 
+        
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; 
+        scroll-snap-type: x mandatory; 
+        gap: 20px;
+    }
+
+    .horizontal-track::-webkit-scrollbar {
+        display: none;
     }
 
     .sponsor-card {
-        width: 90%;
-        margin: 0 auto 20px auto;
+        width: 260px; 
+        height: 300px;
+        margin: 0; 
+        flex-shrink: 0; 
+        scroll-snap-align: center; 
     }
+
+    /* Terminal Form (Join Us) */
+    .terminal-container { width: 95%; margin: 100px auto 30px auto; max-width: 100%; }
+    .terminal-body { padding: 20px 15px; }
+    .terminal-input-group { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .terminal-input-group label { margin-bottom: 2px; }
+    .terminal-input-group input, .terminal-input-group select { width: 100%; }
+    .val-status { margin-left: 0 !important; margin-top: 5px; align-self: flex-start; display: block; }
+    .terminal-checkbox span:last-child { font-size: 0.75rem; word-wrap: normal; }
+    #terminal-overlay { padding: 20px; }
+    .term-line { font-size: 0.9rem; }
+
+/* ==========================================================================
+       🔧 REPARAȚIE FEREASTRĂ MODALĂ (FONTURI MARI DE SISTEM)
+       ========================================================================== */
+    .modal-content { 
+        width: 92% !important; /* Puțin mai îngust ca să nu atingă fizic marginile telefonului */
+        margin: auto; 
+        padding: 45px 15px 20px 15px !important; /* Mult loc sus pt butonul X */
+        max-height: 85vh; 
+        overflow-y: auto; 
+        position: relative;
+    }
+    
+    /* Previne "spargerea" titlului pe fonturi gigantice */
+    .modal-header h3 {
+        font-size: 1.3rem !important; /* L-am micșorat preventiv pt fontul HACKED */
+        line-height: 1.1 !important;
+        width: 100% !important; /* Îl forțăm să aibă loc să se desfășoare */
+        word-wrap: break-word !important; 
+        white-space: normal !important; /* Îi dă voie să treacă pe rândul 2 corect */
+        padding-left: 40px !important; /* Loc pt butonul X */
+        margin-bottom: 15px !important;
+    }
+
+    /* Info: Data și locația */
+    .modal-meta { 
+        display: flex !important;
+        flex-direction: column !important; 
+        align-items: flex-start !important;
+        gap: 8px !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 15px !important;
+        width: 100% !important;
+    }
+    
+    /* Textul descriptiv (Ca să nu mai apară strâns ca un șnur pe centru) */
+    .modal-desc {
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+        width: 100% !important; /* OBLIGATORIU: să ocupe tot spațiul cardului pe lățime */
+        text-align: left !important;
+        word-wrap: break-word !important;
+        white-space: normal !important;
+        padding: 0 !important;
+    }
+
+    .modal-img { 
+        height: 180px; 
+        width: 100% !important;
+        object-fit: cover !important;
+    }
+
+    /* Butonul X - Mutat sus în STÂNGA ferm */
+    .close-modal {
+        top: 10px !important;
+        left: 10px !important;
+        right: auto !important;
+        font-size: 24px !important;
+        width: 35px;
+        height: 35px;
+        background-color: rgba(196, 30, 58, 0.2);
+        border: 1px solid var(--red-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white !important;
+        z-index: 999999;
+    }
+
+    /* Footer */
+    .footer-content { flex-direction: column; text-align: left; padding: 0 20px 30px 20px; }
+    .footer-bottom { flex-direction: column; gap: 10px; padding: 20px; text-align: center; }
 }
-
-
-
-/* =========================================
-   MATRIX MODE (Konami Code Activation)
-   ========================================= */
-
-body.matrix-mode {
-    --red-primary: #00FF41 !important; /* Verde Hacker */
-    --red-dark: #003B00 !important; /* Verde închis */
-    --bg-dark: #000000 !important; /* Negru total */
-    --text-white: #00FF41 !important; /* Tot textul alb devine verde */
-    font-family: 'Courier New', monospace !important; /* Font stil terminal */
-}
-
-    /* 1. Navbar-ul devine Negru cu Verde */
-    body.matrix-mode .navbar {
-        background: rgba(0, 10, 0, 0.95) !important;
-        border-bottom: 1px solid #00FF41;
-        box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
-    }
-
-    /* 2. Cardurile devin verzi */
-    body.matrix-mode .event-card,
-    body.matrix-mode .sponsor-card,
-    body.matrix-mode .flip-card-back,
-    body.matrix-mode .terminal-container {
-        background: rgba(0, 15, 0, 0.95) !important;
-        border-color: #00FF41 !important;
-        color: #00FF41 !important;
-        box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
-    }
-
-    /* 3. Rama TV-ului */
-    body.matrix-mode .tv-screen-container {
-        border-color: #00FF41 !important;
-        box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
-    }
-
-    /* 4. Ascundem overlay-ul roșu de la Hero ca să se vadă video-ul Matrix clar */
-    body.matrix-mode .hero-overlay {
-        background: rgba(0, 0, 0, 0.3) !important; /* Mult mai transparent */
-    }
-
-    /* 5. Butoane */
-    body.matrix-mode .btn-primary,
-    body.matrix-mode .nav-btn-cta {
-        background-color: #000 !important;
-        color: #00FF41 !important;
-        border: 1px solid #00FF41 !important;
-        box-shadow: 0 0 10px #00FF41;
-    }

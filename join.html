@@ -15,17 +15,22 @@
         <a href="index.html" class="logo-link">
             <img src="assets/img/logo.png" alt="Code Society Logo" class="logo-img">
         </a>
+
+        <a href="join.html" class="btn btn-mobile-nav">> JOIN US</a>
+
         <ul class="nav-links">
-            <li><a href="index.html">ACASĂ</a></li>
-            <li><a href="index.html#events">EVENIMENTE</a></li>
-            <li><a href="index.html#mentors">MENTORI</a></li>
-            <li><a href="join.html" class="nav-btn-cta">JOIN US</a></li>
+            <li><a href="index.html#home">Acasă</a></li>
+            <li><a href="index.html#events">Evenimente</a></li>
+            <li><a href="index.html#echipa">Echipa</a></li>
+            <li><a href="index.html#sponsors">Sponsori</a></li>
+            <li><a href="about.html">Despre noi</a></li>
+            <li><a href="join.html" class="nav-btn-cta" id="joinBtn">JOIN US</a></li>
         </ul>
-        <div class="hamburger">
+        <button class="hamburger" aria-label="Deschide meniul de navigare" aria-expanded="false">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </div>
+        </button>
     </nav>
 
     <section class="join-section">
@@ -48,30 +53,87 @@
                 <p class="prompt-text">To join the society, please input credentials:</p>
                 <br>
 
-                <form class="terminal-form" action="https://formspree.io/f/xpwvggge" method="POST" id="hackerForm">
+                <form class="terminal-form" action="https://script.google.com/macros/s/AKfycbzPju512R2QTCFNaDuE8ygFstGoXrBuRX35HOhOuiuTGWdIImlVRzOInpgDW7RaX_Z0/exec" method="POST" id="hackerForm">
+
+                <div class="terminal-input-group event-target-group">
+                        <span class="prompt-sign">></span>
+                        <label for="event_select" class="event-target-label">TARGET_EVENT:</label>
+                        <select id="event_select" name="events" class="terminal-select event-target-select" required>
+                            <option value="" disabled selected>[ SELECTEAZĂ EVENIMENTUL ]</option>
+                            <option value="Înscriere Generală (Membru)">Înscriere Generală / Membru Nou</option>
+                            <option value="GENERATED GENERATION">Conferința AI: Generated Generation</option>
+                            <!-- <option value="BUCURESTI: BECOME HUMAN">Workshop AI: București: Become Human</option>
+                            <option value="ACCESS GRANTED: FUTURE IS NOT SECURE">Conferința CyberSec: ACCESS GRANTED: FUTURE IS NOT SECURE </option>
+                            <option value="Ai incuiat usa? - CTF">CTF CyberSec: Ai incuiat ușa?</option>
+                            <option value="Full stacking your way to succes">Conferința WD: Full stacking your way to succes</option>
+                            <option value="Byte into the Coding World">Workshop WD: Byte into the Coding World</option>
+                            <option value="Don't reach for the sky, reach for the Cloud.">Conferința Cloud: Don't reach for the sky, reach for the Cloud</option>
+                            <option value="Head in the clouds, feet on the code">Workshop Cloud: Head in the clouds, feet on the code</option> -->
+                        </select>
+                    </div>
+
+                   <div class="honeypot-field" aria-hidden="true">
+                        <label for="website_url">Lăsați acest câmp gol dacă sunteți om:</label>
+                        <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+                    </div>
 
                     <div class="terminal-input-group">
                         <span class="prompt-sign">$</span>
                         <label for="name">ENTER_NAME:</label>
-                        <input type="text" id="name" name="name" autocomplete="off" required>
+                        <input type="text" id="name" name="name" autocomplete="off" required placeholder="Ex: Ion Popescu">
                     </div>
 
                     <div class="terminal-input-group">
                         <span class="prompt-sign">$</span>
                         <label for="email">ENTER_EMAIL:</label>
-                        <input type="email" id="email" name="email" autocomplete="off" required>
+                        <input type="email" id="email" name="email" autocomplete="off" required placeholder="Ex: nume@domeniu.com">
                     </div>
 
                     <div class="terminal-input-group">
                         <span class="prompt-sign">$</span>
-                        <label for="role">SELECT_ROLE:</label>
-                        <select id="role" name="role" class="terminal-select">
-                            <option value="frontend">Frontend_Dev</option>
-                            <option value="backend">Backend_Dev</option>
-                            <option value="designer">UI_UX_Designer</option>
-                            <option value="beginner">Newbie_Learner</option>
+                        <label for="faculty">ENTER_FACULTY:</label>
+                        <input type="text" id="faculty" name="faculty" autocomplete="off" list="faculty-list" required placeholder="Ex: CSIE / Automatica">
+                        
+                        <datalist id="faculty-list">
+                            <option value="CSIE (Cibernetică)"></option>
+                            <option value="ACS (Automatică și Calculatoare)"></option>
+                            <option value="FMI (Matematică și Informatică)"></option>
+                            <option value="ETTI (Electronică)"></option>
+                            <option value="FILS (Inginerie în Limbi Străine)"></option>
+                        </datalist>
+                    </div>
+
+                    <div class="terminal-input-group">
+                        <span class="prompt-sign">$</span>
+                        <label for="year">SELECT_YEAR:</label>
+                        <select id="year" name="year" class="terminal-select" required>
+                            <option value="" disabled selected>[ SELECTEAZA ANUL ]</option>
+                            <option value="Anul 1">Anul 1</option>
+                            <option value="Anul 2">Anul 2</option>
+                            <option value="Anul 3">Anul 3</option>
+                            <option value="Anul 4">Anul 4</option>
+                            <option value="Master / Altele">Master / Altele</option>
                         </select>
                     </div>
+
+<div class="terminal-input-group terminal-group-gdpr">
+    <span class="prompt-sign">></span> 
+    <label class="gdpr-label">AGREEMENT_PROTOCOLS (GDPR):</label>
+
+    <div class="gdpr-scroll-box">
+        <p>Prin completarea acestui formular de înregistrare, declar că sunt de acord cu colectarea și prelucrarea datelor mele personale (nume, prenume, adresă de email, număr de telefon) în conformitate cu prevederile Regulamentului European 2016/679 privind protecția persoanelor fizice în ceea ce privește prelucrarea datelor cu caracter personal (GDPR). Aceste date vor fi utilizate exclusiv în scopul organizării și desfășurării proiectului Code Society.</p>
+        <p>De asemenea, îmi dau consimțământul pentru utilizarea și publicarea imaginii mele (fotografii și/sau materiale video realizate în timpul proiectului) în scopul promovării și comunicării despre proiect pe canalele oficiale ale Code Society și ale organizației Voluntari pentru Idei și Proiecte.</p>
+        <p>Datele mele personale vor fi stocate pentru o perioadă de 2 ani de la completarea acestui formular. Sunt conștient/ă că îmi pot retrage consimțământul privind prelucrarea datelor personale în orice moment, prin transmiterea unei solicitări către Voluntari pentru Idei și Proiecte la adresa <a href="mailto:contact@vipromania.ro" style="color: var(--red-primary);">contact@vipromania.ro</a>.</p>
+    </div>
+
+    <label class="terminal-checkbox checkbox-wrapper">
+        <input type="checkbox" name="gdpr_data" required>
+        <span class="checkmark"></span>
+        <span class="checkbox-text">
+            <strong style="color: var(--red-primary);">[OBLIGATORIU]</strong> Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea datelor mele personale (nume, prenume, email, telefon), precum și cu utilizarea și publicarea imaginii mele (foto/video realizate în timpul proiectului) de către Voluntari pentru Idei și Proiecte și Code Society, în scopul organizării, desfășurării și promovării proiectului, conform Regulamentului (UE) 2016/679. Înțeleg că datele vor fi stocate timp de 2 ani și că îmi pot retrage consimțământul oricând, printr-un email la contact@vipromania.ro.
+        </span>
+    </label>
+</div>
 
                     <button type="submit" class="terminal-submit">
                         > EXECUTE_PROTOCOL (SUBMIT)
@@ -83,17 +145,40 @@
 
     <footer class="site-footer">
         <div class="container footer-content">
+
             <div class="footer-col">
                 <h3 class="font-hacked logo-text">&lt;CODE SOCIETY/&gt;</h3>
                 <p>Building the future bit by bit.</p>
             </div>
+
+            <div class="footer-col">
+                <h4 class="font-hacked">NAVIGARE</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html#home">Acasă</a></li>
+                    <li><a href="index.html#events">Evenimente</a></li>
+                    <li><a href="index.html#echipa">Echipa</a></li>
+                    <li><a href="index.html#sponsors">Sponsori</a></li>
+                    <li><a href="about.html">Despre Noi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="font-hacked">CONNECT</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/codesociety.ro/" class="social-btn">INSTAGRAM</a>
+                    <a href="https://www.linkedin.com/company/codesocietyro/" class="social-btn">LINKEDIN</a>
+                    <a href="https://www.facebook.com/people/Code-Society/61580564026062/" class="social-btn">FACEBOOK</a>
+                    <a href="https://www.tiktok.com/@codesociety.ro" class="social-btn">TIKTOK</a>
+                </div>
+            </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2025 Code Society.</p>
+            <p>&copy; 2026 Code Society. All rights reserved.</p>
             <p class="console-log">System.out.println("Goodbye World");</p>
         </div>
     </footer>
 
-    <script src="js/main.js?v=999"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
