@@ -234,23 +234,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }   
 
-    // --- SCROLL REVEAL ---
+// --- 🚀 MODERN SCROLL REVEAL (HORIZONTAL & VERTICAL) ---
     const reveals = document.querySelectorAll(".reveal");
     if (reveals.length > 0) {
-        function reveal() {
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 30;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Cardul a intrat pe ecran -> Îl aprindem
+                    entry.target.classList.add("active");
+                    // Îi ștergem delay-ul inițial ca să reacționeze instant la scroll-ul orizontal pe viitor
+                    entry.target.style.transitionDelay = "0ms"; 
                 } else {
-                    reveals[i].classList.remove("active");
+                    // Cardul a ieșit de pe ecran stânga/dreapta -> Îl stingem, ca să aibă fade-in din nou!
+                    entry.target.classList.remove("active");
                 }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
+            });
+        }, {
+            root: null,
+            threshold: 0.15 // Se declanșează fix când 15% din card a intrat pe ecran
+        });
+
+        reveals.forEach(reveal => {
+            revealObserver.observe(reveal);
+        });
     }
 
  // --- PRELOADER (ONCE PER SESSION) ---
@@ -304,6 +310,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         window.addEventListener('scroll', startCounting);
+    }
+
+// =================================================================
+    // 🖱️ HORIZONTAL SCROLL ON MOUSE WHEEL (TURBO SPEED + NO LEAK)
+    // =================================================================
+    const horizontalGrids = document.querySelectorAll('.events-grid, .team-grid-full');
+    
+    if (horizontalGrids.length > 0) {
+        horizontalGrids.forEach(grid => {
+            grid.addEventListener('wheel', (e) => {
+                // Dacă utilizatorul folosește un touchpad și dă swipe orizontal nativ, nu intervenim
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+                if (e.deltaY !== 0) {
+                    // 🔒 OPRIM COMPLET scroll-ul vertical cât timp mouse-ul e pe carduri!
+                    // Asta previne pagina să mai alunece în jos când ajungi la capăt.
+                    e.preventDefault(); 
+                    
+                    // Mișcăm cardurile stânga/dreapta (viteza x3)
+                    grid.scrollLeft += e.deltaY * 3; 
+                }
+            }, { passive: false });
+        });
     }
 
     // --- BACK TO TOP ---
@@ -765,7 +794,7 @@ document.addEventListener('DOMContentLoaded', () => {
    // =================================================================
     // 🟢 LIVE FORM VALIDATION & FACULTY RESTRICTION (Terminal Style)
     // =================================================================
-    const formInputs = document.querySelectorAll('.terminal-input-group input[type="text"], .terminal-input-group input[type="email"], .terminal-input-group select');
+    const formInputs = document.querySelectorAll('.terminal-input-group input[type="text"], .terminal-input-group input[type="email"], .terminal-input-group input[type="tel"], .terminal-input-group select');
     
     if (formInputs.length > 0) {
         formInputs.forEach(input => {
@@ -945,5 +974,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ==========================================================================
+    // 🔗 CLEAN NAV SCROLL (FĂRĂ HASH-URI BLOCATE ÎN URL)
+    // ==========================================================================
+    document.querySelectorAll('.nav-links a, .footer-links a, .logo-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            let href = this.getAttribute('href');
+            
+            // Verificăm dacă link-ul conține o ancoră (#)
+            if (href && href.includes('#')) {
+                let targetId = href.substring(href.indexOf('#'));
+                let targetSection = document.querySelector(targetId);
+
+                // Dacă secțiunea există pe pagina curentă, preluăm controlul
+                if (targetSection) {
+                    e.preventDefault(); // 🔒 Oprim HTML-ul să bage # în URL
+
+                    // 1. Facem scroll fin către secțiune
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // 2. Ștergem instant orice ancoră din URL pentru un aspect premium
+                    history.replaceState(null, null, window.location.pathname);
+                    
+                    // 3. Închidem automat meniul pe mobil (dacă era deschis)
+                    const navLinks = document.querySelector('.nav-links');
+                    const hamburger = document.querySelector('.hamburger');
+                    if (navLinks && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                }
+            }
+        });
+    });
 
 })();

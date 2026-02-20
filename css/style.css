@@ -92,7 +92,7 @@ section {
     position: relative;
     transform: translateY(50px);
     opacity: 0;
-    transition: all 1s ease;
+    transition: all 0.4s ease; /* 🟢 Acum e mult mai snappy */
 }
 
 .reveal.active {
@@ -280,13 +280,71 @@ p.subtitle { font-size: 1.2rem; color: #d1d1d1; margin-bottom: 40px; max-width: 
 .section-title-light { font-size: 2.5rem; color: #120000; margin-bottom: 30px; border-bottom: 3px solid var(--red-primary); display: inline-block; }
 
 .events-section { padding: 80px 20px; background-color: #0a0000; }
-.events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.events-grid, .team-grid-full { 
+    display: flex; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    -webkit-overflow-scrolling: touch; 
+    scroll-snap-type: x mandatory; 
+    gap: 30px; 
+    
+    /* 🔴 Dăm mai mult spațiu jos (60px) ca să aibă loc animația de reveal */
+    padding: 15px 5px 60px 5px; 
+    margin-bottom: -30px; 
+    width: 100%; 
+}
+
+.team-grid-full {
+    margin-top: 30px; 
+}
 
 .event-card {
-    background-color: #1a0505; border: 1px solid var(--red-dark); border-radius: 8px; overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;
+    background-color: #1a0505; 
+    border: 1px solid var(--red-dark); 
+    border-radius: 8px; 
+    overflow: hidden;
+    display: flex; 
+    flex-direction: column;
+    
+    /* Reguli pentru scroll orizontal */
+    flex: 0 0 350px; 
+    scroll-snap-align: start;
+    
+    /* 🔴 Folosim 'all' ca să lăsăm opacitatea din clasa .reveal să funcționeze */
+    transition: all 0.4s ease; 
 }
-.event-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(196, 30, 58, 0.15); border-color: var(--red-primary); }
+
+.event-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 0 20px rgba(196, 30, 58, 0.15); 
+    border-color: var(--red-primary); 
+}
+
+.flip-card { 
+    background-color: transparent; 
+    height: 320px; 
+    perspective: 1000px; 
+    cursor: pointer; 
+    
+    /* Reguli pentru scroll orizontal */
+    flex: 0 0 280px; 
+    scroll-snap-align: start;
+}
+
+/* ==========================================================================
+   HIDDEN SCROLLBARS (CLEAN UI & NO GHOSTING)
+   ========================================================================== */
+/* Ascundem bara complet pentru un aspect nativ, lăsând scroll-ul din rotiță să facă magia */
+.events-grid, .team-grid-full {
+    scrollbar-width: none; /* Pentru Firefox */
+    -ms-overflow-style: none; /* Pentru Internet Explorer / Edge */
+}
+
+.events-grid::-webkit-scrollbar, 
+.team-grid-full::-webkit-scrollbar {
+    display: none; /* Pentru Chrome, Safari și Opera */
+}
 
 .card-image-wrapper, .card-image { height: 200px; width: 100%; position: relative; background-color: #000; overflow: hidden; }
 .card-img-real, .img-placeholder, .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -301,25 +359,163 @@ p.subtitle { font-size: 1.2rem; color: #d1d1d1; margin-bottom: 40px; max-width: 
 .btn-card { display: inline-block; text-decoration: none; color: var(--red-primary); font-weight: bold; font-family: 'Fira Code', monospace; border: 1px solid var(--red-primary); padding: 10px 0; text-align: center; border-radius: 4px; transition: background 0.3s ease; }
 .btn-card:hover { background-color: var(--red-primary); color: white; }
 
-/* About Section */
-.about-section { background-color: var(--bg-light); color: #120000; padding: 80px 20px; }
-.about-layout { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; }
-.about-text { flex: 1; min-width: 300px; }
-.about-desc { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; color: #333; }
-.stats-row { display: flex; gap: 40px; margin-top: 30px; }
-.stat-number { font-size: 2.5rem; color: var(--red-primary); display: block; text-shadow: 0 0 15px rgba(196, 30, 58, 0.4); }
-.stat-label { font-size: 0.9rem; font-weight: bold; color: #555; }
+/* ==========================================================================
+   ABOUT SECTION (DARK HACKER THEME)
+   ========================================================================== */
+.about-section { 
+    background-color: var(--bg-dark); /* Schimbat pe fundalul dark al site-ului */
+    color: var(--text-white); 
+    padding: 80px 20px; 
+}
+
+.about-layout { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 50px; 
+    align-items: center; 
+}
+
+.about-text { 
+    flex: 1 1 45%; /* Îi dăm 45% din lățime pe Desktop */
+    min-width: 300px; 
+    text-align: left; /* Forțăm textul să stea frumos la stânga */
+}
+
+.about-image {
+    flex: 1 1 45%; /* Poza primește restul de spațiu */
+    text-align: center;
+}
+
+.about-desc { 
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    margin-bottom: 20px; 
+    color: #d1d1d1; /* Gri deschis, perfect lizibil pe fundal negru */
+}
+
+.stats-row { 
+    display: flex; 
+    gap: 40px; 
+    margin-top: 30px; 
+}
+
+.stat-number { 
+    font-size: 2.5rem; 
+    color: var(--red-primary); 
+    display: block; 
+    text-shadow: 0 0 15px rgba(196, 30, 58, 0.4); 
+}
+
+.stat-label { 
+    font-size: 0.9rem; 
+    font-weight: bold; 
+    color: #aaa; /* Făcut mai deschis ca să se vadă pe negru */
+}
+
+/* ==========================================================================
+   ABOUT PAGE EXTRAS (Stilizarea pentru textul "Our Story")
+   ========================================================================== */
+.about-page-padding {
+    padding-top: 150px; 
+    min-height: 80vh;
+}
+
+.text-red {
+    color: var(--red-primary);
+}
+
+.about-domain-list {
+    list-style: none; 
+    margin: 25px 0; 
+    padding-left: 0; 
+    color: var(--text-white);
+}
+
+.about-domain-list li {
+    margin-bottom: 10px; 
+    display: flex; 
+    align-items: center;
+}
+
+.domain-arrow {
+    color: var(--red-primary); 
+    font-weight: bold; 
+    margin-right: 12px; 
+    font-size: 1.1rem;
+}
+
+.about-quote {
+    margin-top: 35px; 
+    padding: 25px; 
+    background: rgba(196, 30, 58, 0.1); 
+    border-left: 5px solid var(--red-primary); 
+    border-radius: 0 4px 4px 0;
+}
+
+.about-quote p {
+    margin: 0; 
+    font-family: 'Fira Code', monospace; 
+    font-size: 1.05rem; 
+    line-height: 1.6; 
+    color: var(--text-white); 
+    font-style: italic;
+}
+
+.about-img-real {
+    width: 100%; 
+    height: auto; 
+    border-radius: 10px; 
+    border: 3px solid var(--red-primary); 
+    box-shadow: 0 0 25px rgba(196, 30, 58, 0.35);
+}
+
+/* ==========================================================================
+   FONT EXCLUSIV PENTRU PAGINA ABOUT (League Spartan)
+   ========================================================================== */
+body.page-about {
+    font-family: 'League Spartan', sans-serif;
+}
+
+/* Țintim exact paragrafele și listele de pe această pagină */
+.page-about .about-desc,
+.page-about .about-quote p,
+.page-about .about-domain-list {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1.25rem; /* League Spartan cere o idee mai mult volum pentru a fi citit perfect */
+    letter-spacing: 0.2px;
+}
 
 /* ==========================================================================
    8. MENTORS & TEAM (Flip Cards)
    ========================================================================== */
-.team-grid-full { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; width: 100%; margin-top: 30px; padding-bottom: 50px; }
+.team-grid-full { 
+    display: flex; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    -webkit-overflow-scrolling: touch; 
+    scroll-snap-type: x mandatory; 
+    gap: 30px; 
+    padding: 15px 5px 30px 5px; 
+    width: 100%; 
+    margin-top: 30px; 
+}
+
 .team-header { text-align: center; width: 100%; margin-bottom: 20px; }
 .team-header h2 { font-size: 2.5rem; display: inline-block; border-bottom: 3px solid var(--red-primary); padding-bottom: 10px; }
-@media screen and (min-width: 1600px) { .team-grid-full { grid-template-columns: repeat(5, 1fr); } }
 
-.flip-card { background-color: transparent; width: 100%; height: 320px; perspective: 1000px; cursor: pointer; }
-.flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+.flip-card { 
+    background-color: transparent; 
+    height: 320px; 
+    perspective: 1000px; 
+    cursor: pointer; 
+    
+    /* 🔴 NOILE REGULI PENTRU SCROLL ORIZONTAL */
+    flex: 0 0 280px; /* Fixăm lățimea la 280px */
+    scroll-snap-align: start;
+}
+
+.flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.4s; transform-style: preserve-3d; }
 .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
 .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid rgba(0,0,0,0.1); }
 .flip-card-front { background-color: #fff; color: #120000; }
@@ -704,7 +900,15 @@ body.matrix-mode .btn-primary, body.matrix-mode .nav-btn-cta { background-color:
         padding: 5px 12px !important; 
         letter-spacing: 0.5px !important;
     }
-    .hamburger { display: block; cursor: pointer; z-index: 1000; }
+    .hamburger { 
+        display: block; 
+        cursor: pointer; 
+        z-index: 1000; 
+        background: transparent; /* Face fundalul invizibil */
+        border: none;            /* Scoate conturul nativ de buton */
+        outline: none;           /* Scoate umbra albastră la apăsare */
+        padding: 0; 
+    }
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(2) { opacity: 0; }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -739,8 +943,15 @@ body.matrix-mode .btn-primary, body.matrix-mode .nav-btn-cta { background-color:
     .hero-buttons { flex-direction: column; gap: 15px; width: 100%; padding: 0 20px; }
     .btn, .btn-secondary { width: 100%; max-width: 300px; text-align: center; margin: 0 auto; display: block; }
 
-    /* Grids (Evenimente, Echipa) */
-    .events-grid, .team-grid-full, .mentors-grid { grid-template-columns: 1fr !important; gap: 20px; padding: 0 15px; }
+/* Grids (Evenimente, Echipa) - Scroll Orizontal Fluid pe Mobil */
+    .events-grid, .team-grid-full { 
+        gap: 15px !important; 
+        padding: 10px 15px 60px 15px !important; /* Lăsăm 60px jos pentru animații și pe mobil */
+    }
+    
+    /* TRUC DE UX: Lățime 85% pentru ca vizitatorul să vadă mereu "buza" următorului card */
+    .event-card { flex: 0 0 85% !important; } 
+    .flip-card { flex: 0 0 80% !important; }
 
     /* About Section */
     #mentors.about-section, .about-section .container { padding: 40px 15px !important; }

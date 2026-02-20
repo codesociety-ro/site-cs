@@ -60,7 +60,6 @@
                         <label for="event_select" class="event-target-label">TARGET_EVENT:</label>
                         <select id="event_select" name="events" class="terminal-select event-target-select" required>
                             <option value="" disabled selected>[ SELECTEAZĂ EVENIMENTUL ]</option>
-                            <option value="Înscriere Generală (Membru)">Înscriere Generală / Membru Nou</option>
                             <option value="GENERATED GENERATION">Conferința AI: Generated Generation</option>
                             <!-- <option value="BUCURESTI: BECOME HUMAN">Workshop AI: București: Become Human</option>
                             <option value="ACCESS GRANTED: FUTURE IS NOT SECURE">Conferința CyberSec: ACCESS GRANTED: FUTURE IS NOT SECURE </option>
@@ -88,6 +87,13 @@
                         <label for="email">ENTER_EMAIL:</label>
                         <input type="email" id="email" name="email" autocomplete="off" required placeholder="Ex: nume@domeniu.com">
                     </div>
+
+                    <div class="terminal-input-group">
+                        <span class="prompt-sign">$</span>
+                        <label for="telefon">ENTER_PHONE:</label>
+                        <input type="tel" id="telefon" name="telefon" autocomplete="off" required pattern="^[0-9\-\+\s]{10,15}$" placeholder="Ex: 07XX XXX XXX">
+                    </div>
+
 
                     <div class="terminal-input-group">
                         <span class="prompt-sign">$</span>
