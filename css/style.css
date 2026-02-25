@@ -642,6 +642,23 @@ body.page-about {
 .checkmark::before { content: "[ ]"; margin-right: 5px; color: var(--red-primary); font-weight: bold; font-size: 1.1rem; }
 .terminal-checkbox input:checked + .checkmark::before { content: "[X]"; color: #00FF41; text-shadow: 0 0 5px #00FF41; }
 .terminal-checkbox:hover { color: white; }
+
+
+/* ==========================================================================
+   UTILITIES PENTRU INTREBAREA OPTIONALA (SURSA)
+   ========================================================================== */
+.source-question-text {
+    color: #ccc;
+    font-family: 'Fira Code', monospace;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.source-options-container {
+    margin-left: 25px; /* Creează efectul vizual de indentare sub prompt */
+}
 /* ==========================================================================
    11. OVERLAYS, MODALS & 404
    ========================================================================== */
@@ -682,6 +699,66 @@ body.page-about {
 .modal-meta { margin-bottom: 20px; border-bottom: 1px dashed #444; padding-bottom: 15px; display: flex; gap: 20px; }
 .modal-img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; border: 1px solid #333; margin-bottom: 20px; }
 .modal-desc { font-size: 1rem; line-height: 1.6; color: #ccc; margin-bottom: 30px; }
+
+/* ==========================================================================
+   EVENIMENTE INCHEIATE (COMPLETED)
+   ========================================================================== */
+/* Starea de finalizat pentru card */
+.completed-event {
+    opacity: 0.5 !important;
+    filter: grayscale(80%) !important;
+    position: relative !important; 
+    pointer-events: none !important; /* Nu mai lasă userul să dea click pe Detalii */
+}
+
+/* Ștampila propriu-zisă */
+.completed-overlay {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: rgba(0, 15, 0, 0.9) !important;
+    color: #00FF41 !important;
+    padding: 15px 25px !important;
+    font-weight: bold !important;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 1.8rem !important;
+    border: 2px solid #00FF41 !important;
+    border-radius: 5px !important;
+    box-shadow: 0 0 25px rgba(0, 255, 65, 0.5) !important;
+    z-index: 99999 !important; /* Fortăm textul deasupra pozei și cardului */
+    text-align: center !important;
+}
+
+/* ==========================================================================
+   EVENIMENTE SOLD OUT
+   ========================================================================== */
+.sold-out-event .card-img-real {
+    /* Diminuăm doar puțin culorile pozei, lăsând textul și butonul neatinse */
+    filter: grayscale(50%) brightness(0.7); 
+    transition: all 0.3s ease;
+}
+
+.sold-out-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    background: rgba(196, 30, 58, 0.9);
+    color: #fff;
+    /* Am ajustat padding-ul și am micșorat fontul ca să încapă textul lung */
+    padding: 10px 15px; 
+    font-family: 'HACKED', 'Fira Code', monospace;
+    font-size: 1.5rem; /* Era 2.2rem înainte */
+    border: 3px solid #fff;
+    z-index: 15;
+    letter-spacing: 2px; /* Am redus puțin și spațierea */
+    box-shadow: 0 0 20px rgba(196, 30, 58, 0.8);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+
 
 /* 404 Error Page */
 .error-page { height: 100vh; width: 100%; background-color: #000; display: flex; justify-content: center; align-items: center; text-align: center; background-image: url('../assets/img/bg-marble.jpg'); background-blend-mode: overlay; }
@@ -798,7 +875,7 @@ body.matrix-mode .btn-primary, body.matrix-mode .nav-btn-cta { background-color:
 
 .team-subtitle {
     margin-top: 10px; 
-    color: #666;
+    color: #ffffff;
 }
 
 
@@ -819,19 +896,25 @@ body.matrix-mode .btn-primary, body.matrix-mode .nav-btn-cta { background-color:
     transition: all 0.3s ease;
 }
 
-/* Fereastra de deasupra cu lacătul */
+/* Ascundem lacătul by default */
 .lock-overlay {
+    display: none; 
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
+
+/* Îl afișăm DOAR când cardul primește clasa .locked-event */
+.locked-event .lock-overlay {
+    display: flex; 
+}
+
 
 .lock-icon {
     font-size: 3.5rem;
@@ -852,6 +935,79 @@ body.matrix-mode .btn-primary, body.matrix-mode .nav-btn-cta { background-color:
     border: 1px dashed var(--red-primary);
     box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
 }
+
+
+/* ==========================================================================
+   CYBER CHECKBOX (GDPR) - FIX BIFĂ & HOLD CLICK
+   ========================================================================== */
+.cyber-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+    gap: 15px;
+    margin-top: 15px;
+    font-family: 'Fira Code', monospace;
+    user-select: none; /* 🛑 FIX 1: Oprește selectarea textului când ții click apăsat */
+    -webkit-user-select: none;
+}
+
+/* Ascundem checkbox-ul standard din browser */
+.cyber-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Creăm pătratul nostru custom */
+.cyber-checkmark {
+    position: relative;
+    top: 2px;
+    left: 0;
+    min-width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--red-primary);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 12px rgba(196, 30, 58, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🛑 FIX 2: Efect de hover DOAR când NU este bifat (prevenim conflictul) */
+.cyber-checkbox-label:hover input:not(:checked) ~ .cyber-checkmark {
+    box-shadow: 0 0 18px rgba(196, 30, 58, 0.9);
+    background-color: rgba(196, 30, 58, 0.2);
+}
+
+/* Cum arată când utilizatorul a bifat căsuța (Forțăm verdele peste orice altceva) */
+.cyber-checkbox-label input:checked ~ .cyber-checkmark {
+    background-color: #27c93f !important;
+    border-color: #27c93f !important;
+    box-shadow: 0 0 15px rgba(39, 201, 63, 0.6) !important;
+}
+
+/* Creăm bifa (✔) */
+.cyber-checkmark:after {
+    content: "✔";
+    position: absolute;
+    display: none;
+    color: #0d0d0d;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 🛑 FIX 3: Forțăm afișarea bifei oricând e checked, indiferent dacă ți click sau faci hover */
+.cyber-checkbox-label input:checked ~ .cyber-checkmark:after {
+    display: block !important;
+}
+
+
+
 
 
 

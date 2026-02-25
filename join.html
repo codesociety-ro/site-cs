@@ -55,21 +55,61 @@
 
                 <form class="terminal-form" action="https://script.google.com/macros/s/AKfycbzPju512R2QTCFNaDuE8ygFstGoXrBuRX35HOhOuiuTGWdIImlVRzOInpgDW7RaX_Z0/exec" method="POST" id="hackerForm">
 
-                <div class="terminal-input-group event-target-group">
-                        <span class="prompt-sign">></span>
-                        <label for="event_select" class="event-target-label">TARGET_EVENT:</label>
-                        <select id="event_select" name="events" class="terminal-select event-target-select" required>
-                            <option value="" disabled selected>[ SELECTEAZĂ EVENIMENTUL ]</option>
-                            <option value="GENERATED GENERATION">Conferința AI: Generated Generation</option>
-                            <!-- <option value="BUCURESTI: BECOME HUMAN">Workshop AI: București: Become Human</option>
-                            <option value="ACCESS GRANTED: FUTURE IS NOT SECURE">Conferința CyberSec: ACCESS GRANTED: FUTURE IS NOT SECURE </option>
-                            <option value="Ai incuiat usa? - CTF">CTF CyberSec: Ai incuiat ușa?</option>
-                            <option value="Full stacking your way to succes">Conferința WD: Full stacking your way to succes</option>
-                            <option value="Byte into the Coding World">Workshop WD: Byte into the Coding World</option>
-                            <option value="Don't reach for the sky, reach for the Cloud.">Conferința Cloud: Don't reach for the sky, reach for the Cloud</option>
-                            <option value="Head in the clouds, feet on the code">Workshop Cloud: Head in the clouds, feet on the code</option> -->
-                        </select>
-                    </div>
+         <div class="terminal-input-group event-target-group">
+    <span class="prompt-sign">></span>
+    <label for="event_select" class="event-target-label">TARGET_EVENT:</label>
+    <select id="event_select" name="events" class="terminal-select event-target-select" required>
+        <option value="" disabled selected>[ SELECTEAZĂ EVENIMENTUL ]</option>
+        
+        <option value="GENERATED GENERATION" class="form-event-option"
+                data-unlock-date="2026-02-17T12:00:00" 
+         data-end-date="2026-02-27T23:59:59">
+            Conferința AI: Generated Generation
+        </option>
+        
+        <option value="BUCURESTI: BECOME HUMAN" class="form-event-option"
+                data-unlock-date="2026-03-01T00:00:00" 
+         data-end-date="2026-03-14T23:59:59">
+            Workshop AI: București: Become Human
+        </option>
+        
+        <option value="ACCESS GRANTED: FUTURE IS NOT SECURE" class="form-event-option"
+                data-unlock-date="2026-03-15T00:00:00" 
+         data-end-date="2026-03-28T23:59:59">
+            Conferința CyberSec: ACCESS GRANTED: FUTURE IS NOT SECURE 
+        </option>
+        
+        <option value="Ai incuiat usa? - CTF" class="form-event-option"
+                data-unlock-date="2026-03-20T00:00:00" 
+         data-end-date="2026-04-04T23:59:59">
+            CTF CyberSec: Ai incuiat ușa?
+        </option>
+        
+        <option value="Full stacking your way to succes" class="form-event-option"
+                data-unlock-date="2026-04-10T00:00:00" 
+         data-end-date="2026-04-25T23:59:59">
+            Conferința WD: Full stacking your way to succes
+        </option>
+        
+        <option value="Byte into the Coding World" class="form-event-option"
+                data-unlock-date="2026-04-13T00:00:00" 
+         data-end-date="2026-04-30T23:59:59">
+            Workshop WD: Byte into the Coding World
+        </option>
+        
+        <option value="Don't reach for the sky, reach for the Cloud." class="form-event-option"
+                data-unlock-date="2026-05-10T00:00:00" 
+         data-end-date="2026-05-23T23:59:59">
+            Conferința Cloud: Don't reach for the sky, reach for the Cloud
+        </option>
+        
+        <option value="Head in the clouds, feet on the code" class="form-event-option"
+                data-unlock-date="2026-05-15T00:00:00" 
+         data-end-date="2026-05-30T23:59:59">
+            Workshop Cloud: Head in the clouds, feet on the code
+        </option>
+    </select>
+</div>
 
                    <div class="honeypot-field" aria-hidden="true">
                         <label for="website_url">Lăsați acest câmp gol dacă sunteți om:</label>
@@ -131,14 +171,57 @@
         <p>De asemenea, îmi dau consimțământul pentru utilizarea și publicarea imaginii mele (fotografii și/sau materiale video realizate în timpul proiectului) în scopul promovării și comunicării despre proiect pe canalele oficiale ale Code Society și ale organizației Voluntari pentru Idei și Proiecte.</p>
         <p>Datele mele personale vor fi stocate pentru o perioadă de 2 ani de la completarea acestui formular. Sunt conștient/ă că îmi pot retrage consimțământul privind prelucrarea datelor personale în orice moment, prin transmiterea unei solicitări către Voluntari pentru Idei și Proiecte la adresa <a href="mailto:contact@vipromania.ro" style="color: var(--red-primary);">contact@vipromania.ro</a>.</p>
     </div>
-
-    <label class="terminal-checkbox checkbox-wrapper">
-        <input type="checkbox" name="gdpr_data" required>
-        <span class="checkmark"></span>
+Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea datelor mele personale (nume, prenume, email, telefon), precum și cu utilizarea și publicarea imaginii mele (foto/video realizate în timpul proiectului) de către Voluntari pentru Idei și Proiecte și Code Society, în scopul organizării, desfășurării și promovării proiectului, conform Regulamentului (UE) 2016/679. Înțeleg că datele vor fi stocate timp de 2 ani și că îmi pot retrage consimțământul oricând, printr-un email la contact@vipromania.ro.
+    <label class="cyber-checkbox-label">
+        <input type="checkbox" name="gdpr_data" required class="cyber-checkbox">
+        <span class="cyber-checkmark"></span>
         <span class="checkbox-text">
             <strong style="color: var(--red-primary);">[OBLIGATORIU]</strong> Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea datelor mele personale (nume, prenume, email, telefon), precum și cu utilizarea și publicarea imaginii mele (foto/video realizate în timpul proiectului) de către Voluntari pentru Idei și Proiecte și Code Society, în scopul organizării, desfășurării și promovării proiectului, conform Regulamentului (UE) 2016/679. Înțeleg că datele vor fi stocate timp de 2 ani și că îmi pot retrage consimțământul oricând, printr-un email la contact@vipromania.ro.
         </span>
     </label>
+</div>
+
+<div class="terminal-group-gdpr">
+    
+    <div class="terminal-input-group">
+        <span class="prompt-sign">$</span>
+        <label>SELECT_SOURCE:</label>
+        <span class="source-question-text">De unde ai auzit de noi? <span class="red-slash font-bold">[OPTIONAL]</span></span>
+    </div>
+    
+    <div class="checkbox-container source-options-container">
+        
+        <label class="terminal-checkbox">
+            <input type="radio" name="sursa_aflare" value="instagram">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">Instagram</span>
+        </label>
+        
+        <label class="terminal-checkbox">
+            <input type="radio" name="sursa_aflare" value="facebook">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">Facebook</span>
+        </label>
+
+        <label class="terminal-checkbox">
+            <input type="radio" name="sursa_aflare" value="tiktok">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">TikTok</span>
+        </label>
+
+        <label class="terminal-checkbox">
+            <input type="radio" name="sursa_aflare" value="whatsapp">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">WhatsApp</span>
+        </label>
+
+        <label class="terminal-checkbox">
+            <input type="radio" name="sursa_aflare" value="prieten_altele">
+            <span class="checkmark"></span>
+            <span class="checkbox-text">Prieten / Altele</span>
+        </label>
+        
+    </div>
 </div>
 
                     <button type="submit" class="terminal-submit">
