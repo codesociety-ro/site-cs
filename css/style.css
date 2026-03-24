@@ -359,6 +359,49 @@ p.subtitle { font-size: 1.2rem; color: #d1d1d1; margin-bottom: 40px; max-width: 
 .btn-card { display: inline-block; text-decoration: none; color: var(--red-primary); font-weight: bold; font-family: 'Fira Code', monospace; border: 1px solid var(--red-primary); padding: 10px 0; text-align: center; border-radius: 4px; transition: background 0.3s ease; }
 .btn-card:hover { background-color: var(--red-primary); color: white; }
 
+/* === HACKATHON FORM SECTION === */
+#hackathon-section,
+#hack-teammates {
+    flex-direction: column;
+    gap: 10px;
+}
+#hackathon-section select {
+    max-width: 300px;
+}
+
+.faq-section {
+    padding: 80px 20px;
+    background-color: #0a0000;
+    color: #fff;
+}
+.faq-category {
+    margin-bottom: 40px;
+}
+.faq-category h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--red-primary);
+}
+.faq-category details {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--red-primary);
+    padding-bottom: 5px;
+}
+.faq-category summary {
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.faq-category summary::-webkit-details-marker { display: none; }
+.faq-category summary:before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.2s;
+}
+.faq-category details[open] summary:before { transform: rotate(90deg); }
+.faq-category p { margin: 10px 0 0 25px; }
+
 /* ==========================================================================
    ABOUT SECTION (DARK HACKER THEME)
    ========================================================================== */

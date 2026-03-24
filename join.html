@@ -70,7 +70,7 @@
         <option value="BUCURESTI: BECOME HUMAN" class="form-event-option"
                 data-unlock-date="2026-03-01T00:00:00" 
          data-end-date="2026-03-16T23:59:59">
-            Workshop AI: București: Become Human
+            Hackathon: București: Become Human
         </option>
         
         <option value="ACCESS GRANTED: FUTURE IS NOT SECURE" class="form-event-option"
@@ -80,9 +80,9 @@
         </option>
         
         <option value="Ai incuiat usa? - CTF" class="form-event-option"
-                data-unlock-date="2026-03-20T00:00:00" 
-         data-end-date="2026-04-06T23:59:59">
-            CTF CyberSec: Ai incuiat ușa?
+                data-unlock-date="2026-03-28T00:00:00" 
+         data-end-date="2026-04-05T23:59:59">
+            CTF CyberSec: Ai incuiat ușa? (3-5 APR)
         </option>
         
         <option value="Full stacking your way to succes" class="form-event-option"
@@ -110,6 +110,35 @@
         </option>
     </select>
 </div>
+
+                <!-- hackathon-specific section (hidden by default) -->
+                <div id="hackathon-section" class="terminal-input-group" style="display:none;">
+                    <span class="prompt-sign">$</span>
+                    <label for="hack_difficulty">DIFFICULTY:</label>
+                    <select id="hack_difficulty" name="difficulty" class="terminal-select" required>
+                        <option value="" disabled selected>[ SELECTAȚI NIVELUL ]</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                    </select>
+                </div>
+                <div id="hack-teammates" style="display:none;">
+                    <p class="prompt-text" style="margin:10px 0;">Introduceți numele și email-ul colegilor de echipă (2 membri obligatoriu, al treilea opțional):</p>
+                    <div class="terminal-input-group">
+                        <span class="prompt-sign">$</span>
+                        <label for="teammate1_name">TEAMMATE1_NAME:</label>
+                        <input type="text" id="teammate1_name" name="teammate1_name" autocomplete="off" placeholder="Ex: Ion Popescu">
+                    </div>
+                    <div class="terminal-input-group">
+                        <span class="prompt-sign">$</span>
+                        <label for="teammate2_name">TEAMMATE2_NAME:</label>
+                        <input type="text" id="teammate2_name" name="teammate2_name" autocomplete="off" placeholder="Ex: Ion Popescu">
+                    </div>
+                    <div class="terminal-input-group">
+                        <span class="prompt-sign">$</span>
+                        <label for="teammate3_name">TEAMMATE3_NAME:</label>
+                        <input type="text" id="teammate3_name" name="teammate3_name" autocomplete="off" placeholder="Ex: Ion Popescu">
+                    </div>
+                </div>
 
                    <div class="honeypot-field" aria-hidden="true">
                         <label for="website_url">Lăsați acest câmp gol dacă sunteți om:</label>
@@ -228,6 +257,32 @@ Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea date
                         > EXECUTE_PROTOCOL (SUBMIT)
                     </button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (initially hidden, shown only for hackathon/CTF) -->
+    <section id="faq-section" class="faq-section" style="display:none;">
+        <div class="container">
+            <h2 class="section-title">FAQ</h2>
+            <div class="faq-category">
+                <h3>Hackathon</h3>
+                <details>
+                    <summary>Cât durează concursul?</summary>
+                    <p>Perioada de desfăşurare diferă în funcţie de eveniment; verifică data specifică în pagina evenimentului.</p>
+                </details>
+                <details>
+                    <summary>Când va începe competiţia?</summary>
+                    <p>Îți vom trimite informații pe email imediat după încheierea perioadei de înscrieri.</p>
+                </details>
+                <details>
+                    <summary>Care este modul de desfăşurare al evenimentului?</summary>
+                    <p>Vezi secțiunea dedicată hackathonului din regulament, disponibilă pe site.</p>
+                </details>
+                <details>
+                    <summary>Care este structura unei echipe?</summary>
+                    <p>Fiecare echipă trebuie să aibă între 3 și 4 membri; unii pot fi deja înscriși în consiliul universității.</p>
+                </details>
             </div>
         </div>
     </section>
