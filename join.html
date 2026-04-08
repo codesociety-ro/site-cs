@@ -1,14 +1,28 @@
 ﻿<!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Code Society</title>
+
+    <meta name="description"
+        content="Code Society: Comunitatea unde tinerii programatori învață, conectează și construiesc viitorul. Workshop-uri, conferințe și hackathoane.">
+    <meta property="og:title" content="Code Society - Join the Revolution">
+    <meta property="og:description"
+        content="Alătură-te comunității noastre. Evenimente tech, mentori de top și networking.">
+    <meta property="og:image" content="https://codesociety.vip/assets/img/logo2.png">
+    <meta property="og:url" content="https://codesociety.vip/join.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Code Society - Join the Revolution">
+    <meta name="twitter:image" content="https://codesociety.vip/assets/img/logo2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -46,101 +60,60 @@
             </div>
 
             <div class="terminal-body">
-                <div class="scanline"></div> <p class="output">Initializing secure connection...</p>
+                <div class="scanline"></div>
+                <p class="output">Initializing secure connection...</p>
                 <p class="output">Loading module <span style="color:var(--red-primary)">auth_protocol_v2.0</span>...</p>
                 <p class="output success">[OK] Encryption keys exchanged.</p>
                 <br>
                 <p class="prompt-text">To join the society, please input credentials:</p>
                 <br>
 
-                <form class="terminal-form" action="https://script.google.com/macros/s/AKfycbzPju512R2QTCFNaDuE8ygFstGoXrBuRX35HOhOuiuTGWdIImlVRzOInpgDW7RaX_Z0/exec" method="POST" id="hackerForm">
+                <form class="terminal-form"
+                    action="https://script.google.com/macros/s/AKfycbzPju512R2QTCFNaDuE8ygFstGoXrBuRX35HOhOuiuTGWdIImlVRzOInpgDW7RaX_Z0/exec"
+                    method="POST" id="hackerForm">
 
-         <div class="terminal-input-group event-target-group">
-    <span class="prompt-sign">></span>
-    <label for="event_select" class="event-target-label">TARGET_EVENT:</label>
-    <select id="event_select" name="events" class="terminal-select event-target-select" required>
-        <option value="" disabled selected>[ SELECTEAZĂ EVENIMENTUL ]</option>
-        
-        <option value="GENERATED GENERATION" class="form-event-option"
-                data-unlock-date="2026-02-17T12:00:00" 
-         data-end-date="2026-03-01T23:59:59">
-            Conferința AI: Generated Generation
-        </option>
-        
-        <option value="BUCURESTI: BECOME HUMAN" class="form-event-option"
-                data-unlock-date="2026-03-01T00:00:00" 
-         data-end-date="2026-03-16T23:59:59">
-            Hackathon: București: Become Human
-        </option>
-        
-        <option value="ACCESS GRANTED: FUTURE IS NOT SECURE" class="form-event-option"
-                data-unlock-date="2026-03-15T00:00:00" 
-         data-end-date="2026-03-30T23:59:59">
-            Conferința CyberSec: ACCESS GRANTED: FUTURE IS NOT SECURE 
-        </option>
-        
-        <option value="Ai incuiat usa? - CTF" class="form-event-option"
-                data-unlock-date="2026-03-28T00:00:00" 
-         data-end-date="2026-04-05T23:59:59">
-            CTF CyberSec: Ai incuiat ușa? (3-5 APR)
-        </option>
-        
-        <option value="Full stacking your way to succes" class="form-event-option"
-                data-unlock-date="2026-04-10T00:00:00" 
-         data-end-date="2026-04-27T23:59:59">
-            Conferința WD: Full stacking your way to succes
-        </option>
-        
-        <option value="Byte into the Coding World" class="form-event-option"
-                data-unlock-date="2026-04-13T00:00:00" 
-         data-end-date="2026-05-02T23:59:59">
-            Workshop WD: Byte into the Coding World
-        </option>
-        
-        <option value="Don't reach for the sky, reach for the Cloud." class="form-event-option"
-                data-unlock-date="2026-05-10T00:00:00" 
-         data-end-date="2026-05-25T23:59:59">
-            Conferința Cloud: Don't reach for the sky, reach for the Cloud
-        </option>
-        
-        <option value="Head in the clouds, feet on the code" class="form-event-option"
-                data-unlock-date="2026-05-15T00:00:00" 
-         data-end-date="2026-06-01T23:59:59">
-            Workshop Cloud: Head in the clouds, feet on the code
-        </option>
-    </select>
-</div>
+                    <div class="terminal-input-group event-target-group">
+                        <span class="prompt-sign">></span>
+                        <label for="event_select" class="event-target-label">TARGET_EVENT:</label>
+                        <select id="event_select" name="events" class="terminal-select event-target-select" required>
+                            <option value="" disabled selected>[ SELECTEAZĂ EVENIMENTUL ]</option>
+                        </select>
+                    </div>
 
-                <!-- hackathon-specific section (hidden by default) -->
-                <div id="hackathon-section" class="terminal-input-group" style="display:none;">
-                    <span class="prompt-sign">$</span>
-                    <label for="hack_difficulty">DIFFICULTY:</label>
-                    <select id="hack_difficulty" name="difficulty" class="terminal-select" required>
-                        <option value="" disabled selected>[ SELECTAȚI NIVELUL ]</option>
-                        <option value="Beginner">Beginner</option>
-                        <option value="Intermediate">Intermediate</option>
-                    </select>
-                </div>
-                <div id="hack-teammates" style="display:none;">
-                    <p class="prompt-text" style="margin:10px 0;">Introduceți numele și email-ul colegilor de echipă (2 membri obligatoriu, al treilea opțional):</p>
-                    <div class="terminal-input-group">
+                    <!-- hackathon-specific section (hidden by default) -->
+                    <div id="hackathon-section" class="terminal-input-group" style="display:none;">
                         <span class="prompt-sign">$</span>
-                        <label for="teammate1_name">TEAMMATE1_NAME:</label>
-                        <input type="text" id="teammate1_name" name="teammate1_name" autocomplete="off" placeholder="Ex: Ion Popescu">
+                        <label for="hack_difficulty">DIFFICULTY:</label>
+                        <select id="hack_difficulty" name="difficulty" class="terminal-select" required>
+                            <option value="" disabled selected>[ SELECTAȚI NIVELUL ]</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                        </select>
                     </div>
-                    <div class="terminal-input-group">
-                        <span class="prompt-sign">$</span>
-                        <label for="teammate2_name">TEAMMATE2_NAME:</label>
-                        <input type="text" id="teammate2_name" name="teammate2_name" autocomplete="off" placeholder="Ex: Ion Popescu">
+                    <div id="hack-teammates" style="display:none;">
+                        <p class="prompt-text" style="margin:10px 0;">Introduceți numele și email-ul colegilor de echipă
+                            (2 membri obligatoriu, al treilea opțional):</p>
+                        <div class="terminal-input-group">
+                            <span class="prompt-sign">$</span>
+                            <label for="teammate1_name">TEAMMATE1_NAME:</label>
+                            <input type="text" id="teammate1_name" name="teammate1_name" autocomplete="off"
+                                placeholder="Ex: Ion Popescu">
+                        </div>
+                        <div class="terminal-input-group">
+                            <span class="prompt-sign">$</span>
+                            <label for="teammate2_name">TEAMMATE2_NAME:</label>
+                            <input type="text" id="teammate2_name" name="teammate2_name" autocomplete="off"
+                                placeholder="Ex: Ion Popescu">
+                        </div>
+                        <div class="terminal-input-group">
+                            <span class="prompt-sign">$</span>
+                            <label for="teammate3_name">TEAMMATE3_NAME:</label>
+                            <input type="text" id="teammate3_name" name="teammate3_name" autocomplete="off"
+                                placeholder="Ex: Ion Popescu">
+                        </div>
                     </div>
-                    <div class="terminal-input-group">
-                        <span class="prompt-sign">$</span>
-                        <label for="teammate3_name">TEAMMATE3_NAME:</label>
-                        <input type="text" id="teammate3_name" name="teammate3_name" autocomplete="off" placeholder="Ex: Ion Popescu">
-                    </div>
-                </div>
 
-                   <div class="honeypot-field" aria-hidden="true">
+                    <div class="honeypot-field" aria-hidden="true">
                         <label for="website_url">Lăsați acest câmp gol dacă sunteți om:</label>
                         <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
                     </div>
@@ -148,27 +121,31 @@
                     <div class="terminal-input-group">
                         <span class="prompt-sign">$</span>
                         <label for="name">ENTER_NAME:</label>
-                        <input type="text" id="name" name="name" autocomplete="off" required placeholder="Ex: Ion Popescu">
+                        <input type="text" id="name" name="name" autocomplete="off" required
+                            placeholder="Ex: Ion Popescu">
                     </div>
 
                     <div class="terminal-input-group">
                         <span class="prompt-sign">$</span>
                         <label for="email">ENTER_EMAIL:</label>
-                        <input type="email" id="email" name="email" autocomplete="off" required placeholder="Ex: nume@domeniu.com">
+                        <input type="email" id="email" name="email" autocomplete="off" required
+                            placeholder="Ex: nume@domeniu.com">
                     </div>
 
                     <div class="terminal-input-group">
                         <span class="prompt-sign">$</span>
                         <label for="telefon">ENTER_PHONE:</label>
-                        <input type="tel" id="telefon" name="telefon" autocomplete="off" required pattern="^[0-9\-\+\s]{10,15}$" placeholder="Ex: 07XX XXX XXX">
+                        <input type="tel" id="telefon" name="telefon" autocomplete="off" required
+                            pattern="^[0-9\-\+\s]{10,15}$" placeholder="Ex: 07XX XXX XXX">
                     </div>
 
 
                     <div class="terminal-input-group">
                         <span class="prompt-sign">$</span>
                         <label for="faculty">ENTER_FACULTY:</label>
-                        <input type="text" id="faculty" name="faculty" autocomplete="off" list="faculty-list" required placeholder="Ex: CSIE / Automatica">
-                        
+                        <input type="text" id="faculty" name="faculty" autocomplete="off" list="faculty-list" required
+                            placeholder="Ex: CSIE / Automatica">
+
                         <datalist id="faculty-list">
                             <option value="CSIE (Cibernetică)"></option>
                             <option value="ACS (Automatică și Calculatoare)"></option>
@@ -191,67 +168,91 @@
                         </select>
                     </div>
 
-<div class="terminal-input-group terminal-group-gdpr">
-    <span class="prompt-sign">></span> 
-    <label class="gdpr-label">AGREEMENT_PROTOCOLS (GDPR):</label>
+                    <div class="terminal-input-group terminal-group-gdpr">
+                        <span class="prompt-sign">></span>
+                        <label class="gdpr-label">AGREEMENT_PROTOCOLS (GDPR):</label>
 
-    <div class="gdpr-scroll-box">
-        <p>Prin completarea acestui formular de înregistrare, declar că sunt de acord cu colectarea și prelucrarea datelor mele personale (nume, prenume, adresă de email, număr de telefon) în conformitate cu prevederile Regulamentului European 2016/679 privind protecția persoanelor fizice în ceea ce privește prelucrarea datelor cu caracter personal (GDPR). Aceste date vor fi utilizate exclusiv în scopul organizării și desfășurării proiectului Code Society.</p>
-        <p>De asemenea, îmi dau consimțământul pentru utilizarea și publicarea imaginii mele (fotografii și/sau materiale video realizate în timpul proiectului) în scopul promovării și comunicării despre proiect pe canalele oficiale ale Code Society și ale organizației Voluntari pentru Idei și Proiecte.</p>
-        <p>Datele mele personale vor fi stocate pentru o perioadă de 2 ani de la completarea acestui formular. Sunt conștient/ă că îmi pot retrage consimțământul privind prelucrarea datelor personale în orice moment, prin transmiterea unei solicitări către Voluntari pentru Idei și Proiecte la adresa <a href="mailto:contact@vipromania.ro" style="color: var(--red-primary);">contact@vipromania.ro</a>.</p>
-    </div>
-Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea datelor mele personale (nume, prenume, email, telefon), precum și cu utilizarea și publicarea imaginii mele (foto/video realizate în timpul proiectului) de către Voluntari pentru Idei și Proiecte și Code Society, în scopul organizării, desfășurării și promovării proiectului, conform Regulamentului (UE) 2016/679. Înțeleg că datele vor fi stocate timp de 2 ani și că îmi pot retrage consimțământul oricând, printr-un email la contact@vipromania.ro.
-    <label class="cyber-checkbox-label">
-        <input type="checkbox" name="gdpr_data" required class="cyber-checkbox">
-        <span class="cyber-checkmark"></span>
-        <span class="checkbox-text">
-            <strong style="color: var(--red-primary);">[OBLIGATORIU]</strong> Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea datelor mele personale (nume, prenume, email, telefon), precum și cu utilizarea și publicarea imaginii mele (foto/video realizate în timpul proiectului) de către Voluntari pentru Idei și Proiecte și Code Society, în scopul organizării, desfășurării și promovării proiectului, conform Regulamentului (UE) 2016/679. Înțeleg că datele vor fi stocate timp de 2 ani și că îmi pot retrage consimțământul oricând, printr-un email la contact@vipromania.ro.
-        </span>
-    </label>
-</div>
+                        <div class="gdpr-scroll-box">
+                            <p>Prin completarea acestui formular de înregistrare, declar că sunt de acord cu colectarea
+                                și prelucrarea datelor mele personale (nume, prenume, adresă de email, număr de telefon)
+                                în conformitate cu prevederile Regulamentului European 2016/679 privind protecția
+                                persoanelor fizice în ceea ce privește prelucrarea datelor cu caracter personal (GDPR).
+                                Aceste date vor fi utilizate exclusiv în scopul organizării și desfășurării proiectului
+                                Code Society.</p>
+                            <p>De asemenea, îmi dau consimțământul pentru utilizarea și publicarea imaginii mele
+                                (fotografii și/sau materiale video realizate în timpul proiectului) în scopul promovării
+                                și comunicării despre proiect pe canalele oficiale ale Code Society și ale organizației
+                                Voluntari pentru Idei și Proiecte.</p>
+                            <p>Datele mele personale vor fi stocate pentru o perioadă de 2 ani de la completarea acestui
+                                formular. Sunt conștient/ă că îmi pot retrage consimțământul privind prelucrarea datelor
+                                personale în orice moment, prin transmiterea unei solicitări către Voluntari pentru Idei
+                                și Proiecte la adresa <a href="mailto:contact@vipromania.ro"
+                                    style="color: var(--red-primary);">contact@vipromania.ro</a>.</p>
+                        </div>
+                        Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea datelor mele personale
+                        (nume, prenume, email, telefon), precum și cu utilizarea și publicarea imaginii mele (foto/video
+                        realizate în timpul proiectului) de către Voluntari pentru Idei și Proiecte și Code Society, în
+                        scopul organizării, desfășurării și promovării proiectului, conform Regulamentului (UE)
+                        2016/679. Înțeleg că datele vor fi stocate timp de 2 ani și că îmi pot retrage consimțământul
+                        oricând, printr-un email la contact@vipromania.ro.
+                        <label class="cyber-checkbox-label">
+                            <input type="checkbox" name="gdpr_data" required class="cyber-checkbox">
+                            <span class="cyber-checkmark"></span>
+                            <span class="checkbox-text">
+                                <strong style="color: var(--red-primary);">[OBLIGATORIU]</strong> Am luat la cunoștință
+                                Nota de Informare și sunt de acord cu prelucrarea datelor mele personale (nume, prenume,
+                                email, telefon), precum și cu utilizarea și publicarea imaginii mele (foto/video
+                                realizate în timpul proiectului) de către Voluntari pentru Idei și Proiecte și Code
+                                Society, în scopul organizării, desfășurării și promovării proiectului, conform
+                                Regulamentului (UE) 2016/679. Înțeleg că datele vor fi stocate timp de 2 ani și că îmi
+                                pot retrage consimțământul oricând, printr-un email la contact@vipromania.ro.
+                            </span>
+                        </label>
+                    </div>
 
-<div class="terminal-group-gdpr">
-    
-    <div class="terminal-input-group">
-        <span class="prompt-sign">$</span>
-        <label>SELECT_SOURCE:</label>
-        <span class="source-question-text">De unde ai auzit de noi? <span class="red-slash font-bold">[OPTIONAL]</span></span>
-    </div>
-    
-    <div class="checkbox-container source-options-container">
-        
-        <label class="terminal-checkbox">
-            <input type="radio" name="sursa_aflare" value="instagram">
-            <span class="checkmark"></span>
-            <span class="checkbox-text">Instagram</span>
-        </label>
-        
-        <label class="terminal-checkbox">
-            <input type="radio" name="sursa_aflare" value="facebook">
-            <span class="checkmark"></span>
-            <span class="checkbox-text">Facebook</span>
-        </label>
+                    <div class="terminal-group-gdpr">
 
-        <label class="terminal-checkbox">
-            <input type="radio" name="sursa_aflare" value="tiktok">
-            <span class="checkmark"></span>
-            <span class="checkbox-text">TikTok</span>
-        </label>
+                        <div class="terminal-input-group">
+                            <span class="prompt-sign">$</span>
+                            <label>SELECT_SOURCE:</label>
+                            <span class="source-question-text">De unde ai auzit de noi? <span
+                                    class="red-slash font-bold">[OPTIONAL]</span></span>
+                        </div>
 
-        <label class="terminal-checkbox">
-            <input type="radio" name="sursa_aflare" value="whatsapp">
-            <span class="checkmark"></span>
-            <span class="checkbox-text">WhatsApp</span>
-        </label>
+                        <div class="checkbox-container source-options-container">
 
-        <label class="terminal-checkbox">
-            <input type="radio" name="sursa_aflare" value="prieten_altele">
-            <span class="checkmark"></span>
-            <span class="checkbox-text">Prieten / Altele</span>
-        </label>
-        
-    </div>
-</div>
+                            <label class="terminal-checkbox">
+                                <input type="radio" name="sursa_aflare" value="instagram">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Instagram</span>
+                            </label>
+
+                            <label class="terminal-checkbox">
+                                <input type="radio" name="sursa_aflare" value="facebook">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Facebook</span>
+                            </label>
+
+                            <label class="terminal-checkbox">
+                                <input type="radio" name="sursa_aflare" value="tiktok">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">TikTok</span>
+                            </label>
+
+                            <label class="terminal-checkbox">
+                                <input type="radio" name="sursa_aflare" value="whatsapp">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">WhatsApp</span>
+                            </label>
+
+                            <label class="terminal-checkbox">
+                                <input type="radio" name="sursa_aflare" value="prieten_altele">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Prieten / Altele</span>
+                            </label>
+
+                        </div>
+                    </div>
 
                     <button type="submit" class="terminal-submit">
                         > EXECUTE_PROTOCOL (SUBMIT)
@@ -269,7 +270,8 @@ Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea date
                 <h3>Hackathon</h3>
                 <details>
                     <summary>Cât durează concursul?</summary>
-                    <p>Perioada de desfăşurare diferă în funcţie de eveniment; verifică data specifică în pagina evenimentului.</p>
+                    <p>Perioada de desfăşurare diferă în funcţie de eveniment; verifică data specifică în pagina
+                        evenimentului.</p>
                 </details>
                 <details>
                     <summary>Când va începe competiţia?</summary>
@@ -281,7 +283,8 @@ Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea date
                 </details>
                 <details>
                     <summary>Care este structura unei echipe?</summary>
-                    <p>Fiecare echipă trebuie să aibă între 3 și 4 membri; unii pot fi deja înscriși în consiliul universității.</p>
+                    <p>Fiecare echipă trebuie să aibă între 3 și 4 membri; unii pot fi deja înscriși în consiliul
+                        universității.</p>
                 </details>
             </div>
         </div>
@@ -311,7 +314,8 @@ Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea date
                 <div class="social-links">
                     <a href="https://www.instagram.com/codesociety.ro/" class="social-btn">INSTAGRAM</a>
                     <a href="https://www.linkedin.com/company/codesocietyro/" class="social-btn">LINKEDIN</a>
-                    <a href="https://www.facebook.com/people/Code-Society/61580564026062/" class="social-btn">FACEBOOK</a>
+                    <a href="https://www.facebook.com/people/Code-Society/61580564026062/"
+                        class="social-btn">FACEBOOK</a>
                     <a href="https://www.tiktok.com/@codesociety.ro" class="social-btn">TIKTOK</a>
                 </div>
             </div>
@@ -323,6 +327,8 @@ Am luat la cunoștință Nota de Informare și sunt de acord cu prelucrarea date
         </div>
     </footer>
 
+    <script src="js/events.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>
+
 </html>
