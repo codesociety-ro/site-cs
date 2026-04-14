@@ -113,8 +113,27 @@
         const telefonInput = document.getElementById('telefon');
         if (telefonInput) {
             telefonInput.addEventListener('input', function (e) {
-                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,4})(\d{0,3})(\d{0,3})/);
-                e.target.value = !x[2] ? x[1] : x[1] + ' ' + x[2] + (x[3] ? ' ' + x[3] : '');
+                let raw = e.target.value.replace(/\D/g, '');
+                let formatted = '';
+                if (raw.length > 0) formatted += raw.substring(0, 4);
+                if (raw.length > 4) formatted += ' ' + raw.substring(4, 7);
+                if (raw.length > 7) formatted += ' ' + raw.substring(7, 10);
+                if (raw.length > 10) formatted += ' ' + raw.substring(10, 15);
+                e.target.value = formatted;
+
+                let checkRaw = raw;
+                if (checkRaw.startsWith('0040')) checkRaw = checkRaw.substring(2);
+                if (checkRaw.startsWith('4007')) checkRaw = "4" + checkRaw.substring(3);
+
+                let isValid = false;
+                if (checkRaw.length === 10 && checkRaw.startsWith('0')) isValid = true;
+                else if (checkRaw.length === 11 && checkRaw.startsWith('40')) isValid = true;
+
+                if (!isValid) {
+                    telefonInput.setCustomValidity("Introduceți un număr valid (ex: 07XX XXX XXX)");
+                } else {
+                    telefonInput.setCustomValidity("");
+                }
             });
         }
 
@@ -563,6 +582,29 @@
                     setTimeout(() => { window.location.href = 'index.html'; }, 1000);
                     return;
                 }
+
+                // --------- TELEFON VALIDATION ---------
+                const rawTelefon = document.getElementById('telefon').value;
+                let telefonClean = rawTelefon.replace(/\D/g, '');
+                let isValidPhone = false;
+                let phoneForWa = "";
+
+                if (telefonClean.startsWith('0040')) telefonClean = telefonClean.substring(2);
+                if (telefonClean.startsWith('4007')) telefonClean = "4" + telefonClean.substring(3);
+
+                if (telefonClean.length === 10 && telefonClean.startsWith('0')) {
+                    isValidPhone = true;
+                    phoneForWa = "4" + telefonClean;
+                } else if (telefonClean.length === 11 && telefonClean.startsWith('40')) {
+                    isValidPhone = true;
+                    phoneForWa = telefonClean;
+                }
+
+                if (!isValidPhone) {
+                    alert("Atenție: Numărul de telefon introdus este incomplet sau invalid. Te rugăm să introduci un număr complet de România (ex: 07XX XXX XXX sau +40...).");
+                    return;
+                }
+                // --------------------------------------
                 // hackathon-specific team size validation
                 const hackSection = document.getElementById('hackathon-section');
                 if (hackSection && hackSection.style.display !== 'none') {
@@ -597,6 +639,12 @@
                 const rawName = document.getElementById('name').value;
                 const nameVal = sanitizeInput(rawName);
                 data.set('name', nameVal);
+
+                // Trimitem numarul curat pentru coloana "telefon"
+                data.set('telefon', phoneForWa);
+                // Construim link-ul automat pentru o noua coloana (tu trebuie sa ai coloana cu acest nume in Google Sheet)
+                data.set('telefon_link', 'https://wa.me/' + phoneForWa);
+
                 // sanitize any hackathon teammate inputs as well
                 for (let i = 1; i <= 3; i++) {
                     const tn = document.getElementById(`teammate${i}_name`);
@@ -637,32 +685,56 @@
                 setTimeout(() => {
                     fetch(hackerForm.action, {
                         method: 'POST',
-                        mode: 'no-cors',
-                        body: data
-                    }).then(() => {
-                        if (typeof playSound === 'function') playSound('success');
-                        printLog(`<br>`);
-                        printLog(`<span style="color:#27c93f; font-weight:bold;">[SUCCESS] REGISTRATION COMPLETE.</span>`);
-                        printLog(`> Welcome to the system.`);
-                        printLog(`> Check your email for further instructions.`);
-                        setTimeout(() => {
-                            const btn = document.createElement('a');
-                            btn.href = 'index.html';
-                            btn.className = 'terminal-submit';
-                            btn.style.textAlign = 'center';
-                            btn.style.textDecoration = 'none';
-                            btn.style.marginTop = '20px';
-                            btn.innerHTML = '< RETURN_HOME';
-                            terminalBody.appendChild(btn);
-                            terminalBody.scrollTop = terminalBody.scrollHeight;
-                        }, 1000);
-                        hackerForm.reset();
-                    }).catch(error => {
-                        console.error("Fetch Error:", error);
-                        printLog(`<span style="color:red; font-weight:bold;">[CRITICAL] Network unavailable.</span>`);
-                        printLog(`> Fatal error detected. Rerouting...`);
-                        setTimeout(() => { window.location.href = '404.html'; }, 1500);
-                    });
+                        body: data // am scos mode: 'no-cors' pentru a putea intercepta erorile reale
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error("Cerere respinsă aparent (posibil protecție anti-spam sau eroare server).");
+                            }
+                            return response.text();
+                        })
+                        .then(text => {
+                            // Verificam daca raspunsul contine cuvinte specifice de eroare de la Google Apps Script
+                            let isError = false;
+                            const txt = text.toLowerCase();
+                            if (txt.includes("error") || txt.includes("eroare") || txt.includes("spam") || txt.includes("duplicat")) {
+                                isError = true;
+                            }
+                            try {
+                                const json = JSON.parse(text);
+                                if (json.result && json.result === 'error') isError = true;
+                            } catch (e) { }
+
+                            if (isError) {
+                                throw new Error("Datele au fost blocate de sistemul de protecție (Email deja folosit).");
+                            }
+
+                            if (typeof playSound === 'function') playSound('success');
+                            printLog(`<br>`);
+                            printLog(`<span style="color:#27c93f; font-weight:bold;">[SUCCESS] REGISTRATION COMPLETE.</span>`);
+                            printLog(`> Welcome to the system.`);
+                            printLog(`> Check your email for further instructions.`);
+                            setTimeout(() => {
+                                const btn = document.createElement('a');
+                                btn.href = 'index.html';
+                                btn.className = 'terminal-submit';
+                                btn.style.textAlign = 'center';
+                                btn.style.textDecoration = 'none';
+                                btn.style.marginTop = '20px';
+                                btn.innerHTML = '< RETURN_HOME';
+                                terminalBody.appendChild(btn);
+                                terminalBody.scrollTop = terminalBody.scrollHeight;
+                            }, 1000);
+                            hackerForm.reset();
+                        })
+                        .catch(error => {
+                            console.error("Fetch Error:", error);
+                            printLog(`<br>`);
+                            printLog(`<span style="color:var(--red-primary); font-weight:bold;">[CRITICAL ERROR] SYSTEM DEFENSE TRIGGERED</span>`);
+                            printLog(`> Acțiune blocată: E-mailul a fost deja utilizat sau sistemul a refuzat trimiterea (Anti-Spam).`);
+                            printLog(`> Detalii: Ați atins limita de înscrieri permise.`);
+                            setTimeout(() => { window.location.href = 'index.html'; }, 5000);
+                        });
                 }, delay + 500);
             });
         }
