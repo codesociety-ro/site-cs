@@ -44,24 +44,13 @@ const CS_EVENTS = [
         endDate: "2026-04-17T23:59:59"
     },
     {
-        id: "ACCESS GRANTED: FUTURE IS NOT SECURE",
-        type: "Conferinta CyberSec",
-        dateDisplay: "21 MAI, ORA TBD",
-        location: "TBD",
-        image: "assets/img/cybersec.jpg",
-        descShort: "O incursiune critică în vulnerabilitățile de mâine și strategiile esențiale pentru a proteja un viitor digital tot mai fragil.",
-        descLong: "O incursiune critică în vulnerabilitățile de mâine și strategiile esențiale pentru a proteja un viitor digital tot mai fragil.",
-        unlockDate: "2026-04-20T00:00:00",
-        endDate: "2026-05-21T23:59:59"
-    },
-    {
-        id: "Ai incuiat usa? - CTF",
-        type: "CTF CyberSec",
+        id: "Cybersecurity Experience",
+        type: "Conferinta & CTF CyberSec",
         dateDisplay: "23 MAI, ORA TBD",
         location: "TBD",
-        image: "assets/img/cybersec work.jpg",
-        descShort: "Dacă la conferință ai aflat că viitorul nu e sigur, acum e rândul tău să demonstrezi că poți securiza intrarea.",
-        descLong: "Dacă la conferință ai aflat că viitorul nu e sigur, acum e rândul tău să demonstrezi că poți securiza intrarea.",
+        image: "assets/img/cybersec.jpg",
+        descShort: "O incursiune critică urmată de acțiune. 1 oră de conferință despre viitorul digital, urmată de ≈ 3 ore de CTF unde demonstrezi că poți securiza intrarea.",
+        descLong: "O incursiune critică urmată de acțiune. 1 oră de conferință despre viitorul digital, urmată de ≈ 3 ore de CTF unde demonstrezi că poți securiza intrarea.",
         unlockDate: "2026-04-20T00:00:00",
         endDate: "2026-05-23T23:59:59"
     }

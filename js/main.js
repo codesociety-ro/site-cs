@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     "use strict";
 
     // Oprim preloader-ul dacă a fost deja văzut
@@ -530,42 +530,15 @@
                 eventSelect.value = eventName;
             }
 
-            // show/hide hackathon fields based on selection
+            // show/hide FAQ fields based on selection
             function checkHackathonVisibility() {
                 const selected = eventSelect.options[eventSelect.selectedIndex];
                 const text = selected ? selected.text : '';
-                const hackSection = document.getElementById('hackathon-section');
-                const teamSection = document.getElementById('hack-teammates');
                 const faqSection = document.getElementById('faq-section');
-                const member1 = document.getElementById('teammate1_name');
-                const member1Email = document.getElementById('teammate1_email');
-                const member2 = document.getElementById('teammate2_name');
-                const member2Email = document.getElementById('teammate2_email');
-                const member3 = document.getElementById('teammate3_name');
-                const member3Email = document.getElementById('teammate3_email');
-                const diff = document.getElementById('hack_difficulty');
                 if (/hackathon|CTF/i.test(text)) {
-                    if (hackSection) hackSection.style.display = 'flex';
-                    if (teamSection) teamSection.style.display = 'block';
                     if (faqSection) faqSection.style.display = 'block';
-                    if (diff) diff.required = true;
-                    if (member1) member1.required = true;
-                    if (member1Email) member1Email.required = true;
-                    if (member2) member2.required = true;
-                    if (member2Email) member2Email.required = true;
-                    if (member3) member3.required = false;
-                    if (member3Email) member3Email.required = false;
                 } else {
-                    if (hackSection) hackSection.style.display = 'none';
-                    if (teamSection) teamSection.style.display = 'none';
                     if (faqSection) faqSection.style.display = 'none';
-                    if (diff) diff.required = false;
-                    if (member1) member1.required = false;
-                    if (member1Email) member1Email.required = false;
-                    if (member2) member2.required = false;
-                    if (member2Email) member2Email.required = false;
-                    if (member3) member3.required = false;
-                    if (member3Email) member3Email.required = false;
                 }
             }
             eventSelect.addEventListener('change', checkHackathonVisibility);
@@ -605,31 +578,6 @@
                     return;
                 }
                 // --------------------------------------
-                // hackathon-specific team size validation
-                const hackSection = document.getElementById('hackathon-section');
-                if (hackSection && hackSection.style.display !== 'none') {
-                    const m1n = document.getElementById('teammate1_name');
-                    const m1e = document.getElementById('teammate1_email');
-                    const m2n = document.getElementById('teammate2_name');
-                    const m2e = document.getElementById('teammate2_email');
-                    const m3n = document.getElementById('teammate3_name');
-                    const m3e = document.getElementById('teammate3_email');
-                    // first two teammates mandatory (both name and email)
-                    if (!m1n || !m1n.value.trim() || !m1e || !m1e.value.trim()) {
-                        alert("Teammate 1 este obligatoriu: completează numele și email-ul.");
-                        return;
-                    }
-                    if (!m2n || !m2n.value.trim() || !m2e || !m2e.value.trim()) {
-                        alert("Teammate 2 este obligatoriu: completează numele și email-ul.");
-                        return;
-                    }
-                    // if user starts filling teammate3, require both fields
-                    if ((m3n && m3n.value.trim() && (!m3e || !m3e.value.trim())) ||
-                        (m3e && m3e.value.trim() && (!m3n || !m3n.value.trim()))) {
-                        alert("Dacă adaugi al treilea coleg, completează atât numele cât și email-ul lui.");
-                        return;
-                    }
-                }
                 function sanitizeInput(str) {
                     const div = document.createElement('div');
                     div.textContent = str;
@@ -645,13 +593,6 @@
                 // Construim link-ul automat pentru o noua coloana (tu trebuie sa ai coloana cu acest nume in Google Sheet)
                 data.set('telefon_link', 'https://wa.me/' + phoneForWa);
 
-                // sanitize any hackathon teammate inputs as well
-                for (let i = 1; i <= 3; i++) {
-                    const tn = document.getElementById(`teammate${i}_name`);
-                    const te = document.getElementById(`teammate${i}_email`);
-                    if (tn && tn.value) data.set(tn.name, sanitizeInput(tn.value));
-                    if (te && te.value) data.set(te.name, sanitizeInput(te.value));
-                }
                 const eventVal = eventSelect ? eventSelect.value : "Unknown";
 
                 terminalBody.innerHTML = '';
