@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     "use strict";
 
     // Oprim preloader-ul dacă a fost deja văzut

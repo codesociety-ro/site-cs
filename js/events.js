@@ -45,12 +45,12 @@ const CS_EVENTS = [
     },
     {
         id: "Cybersecurity Experience",
-        type: "Conferinta & CTF CyberSec",
+        type: "Cybersecurity",
         dateDisplay: "23 MAI, ORA TBD",
         location: "TBD",
         image: "assets/img/cybersec.jpg",
-        descShort: "O incursiune critică urmată de acțiune. 1 oră de conferință despre viitorul digital, urmată de ≈ 3 ore de CTF unde demonstrezi că poți securiza intrarea.",
-        descLong: "O incursiune critică urmată de acțiune. 1 oră de conferință despre viitorul digital, urmată de ≈ 3 ore de CTF unde demonstrezi că poți securiza intrarea.",
+        descShort: "O incursiune critică urmată de acțiune. 1 oră de panel despre viitorul digital, urmată de ≈ 3 ore de CTF unde demonstrezi că poți securiza intrarea.",
+        descLong: "O incursiune critică urmată de acțiune. 1 oră de panel despre viitorul digital, urmată de ≈ 3 ore de CTF unde demonstrezi că poți securiza intrarea.",
         unlockDate: "2026-04-20T00:00:00",
         endDate: "2026-05-23T23:59:59"
     }
